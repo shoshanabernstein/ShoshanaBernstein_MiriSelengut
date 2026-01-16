@@ -10,7 +10,7 @@ namespace Entities
             Person p2 = new Person("Shoshana", 123456789);
             Person p3 = new Person("Miri", 987654321);
 
-            Person[] people = new Person{p2, p3};
+            Person[] people = new Person[] {p2, p3};
             foreach (Person person in people)
             {
                 Console.WriteLine($"Name: {person.Name}, ID: {person.ID}");
