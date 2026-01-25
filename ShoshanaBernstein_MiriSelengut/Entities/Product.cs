@@ -10,11 +10,11 @@ namespace Entities
         public string ProductName { get; set; }
         public double CostPerUnit { get; set; }
 
-        public Product(int productNumber, string productName, double costPerUnit)
+        public Product(int ProductNumber, string ProductName, double CostPerUnit)
         {
-            this.ProductNumber = productNumber;
-            this.ProductName = productName;
-            this.CostPerUnit = costPerUnit;
+            this.ProductNumber = ProductNumber;
+            this.ProductName = ProductName;
+            this.CostPerUnit = CostPerUnit;
         }
     }
 }

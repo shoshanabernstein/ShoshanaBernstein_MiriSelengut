@@ -9,10 +9,10 @@ namespace Entities
         public string Name { get; set; }
         public int ID { get; set; }
 
-        public Person(string name, int id)
+        public Person(string Name, int ID)
         {
-            this.Name = name;
-            this.ID = id;
+            this.Name = Name;
+            this.ID = ID;
         }
 
         public override string ToString()
