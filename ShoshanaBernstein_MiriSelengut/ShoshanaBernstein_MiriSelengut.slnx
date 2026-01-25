@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="Entities/Entities.csproj" />
-  <Project Path="ShoshanaBernstein_MiriSelengut/ShoshanaBernstein_MiriSelengut.csproj" />
-  <Project Path="UseEntities/UseEntities.csproj" />
+  <Project Path="Entities/Entities.csproj" Id="7414ba9b-3c0f-49be-bc19-6affde8ab358" />
+  <Project Path="ShoshanaBernstein_MiriSelengut/ShoshanaBernstein_MiriSelengut.csproj" Id="ba79920a-80d7-4c40-83e6-cddacdc0f3a1" />
+  <Project Path="UseEntities/UseEntities.csproj" Id="ec48190c-d0d2-460d-9944-042f4c8e3b6a" />
 </Solution>

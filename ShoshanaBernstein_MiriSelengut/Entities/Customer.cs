@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entities
 {
-    internal class Customer : Person
+    internal class Customer 
     {
         private int creditCard;
     }

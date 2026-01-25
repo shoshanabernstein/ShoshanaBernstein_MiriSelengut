@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entities
 {
-    internal class SalesRep : Employee
+    internal class SalesRep 
     {
         public int CommsionRate { get; set; }
     }

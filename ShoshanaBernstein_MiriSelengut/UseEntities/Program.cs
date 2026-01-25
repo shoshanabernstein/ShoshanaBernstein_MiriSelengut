@@ -29,7 +29,8 @@ namespace UseEntities
 
             Person[] people = new Person[10];
 
-            string[] lines = File. ReadAllLines(@"..\..\text.txt");
+
+            string[] lines = File. ReadAllLines(@"..\..\Text.txt");
 
             int index = 0;
 
