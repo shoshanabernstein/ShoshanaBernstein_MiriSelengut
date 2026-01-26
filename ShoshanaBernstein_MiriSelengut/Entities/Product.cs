@@ -26,5 +26,10 @@ namespace Entities
             this.CostPerUnit = CostPerUnit;
             this.AmountInStock = AmountInStock;
         }
+
+        public override string ToString()
+        {
+            return "Name:" + ProductName + "\nNumber: " + ProductNumber + "\nCost per unit: " + CostPerUnit + "\nAmount in stock: " + AmountInStock;
+        }
     }
 }
