@@ -4,13 +4,16 @@ using System.Text;
 
 namespace Entities
 {
+    // A class to create objects for each Employee. Inherets from Person.
     internal class Employee : Person
     {
+        // Employee's salary
         public int Salary { get; set; }
-        public Employee(string name, int id, int salar)
-            : base(name, id)
+
+        public Employee(string Name, int ID, int Salary)
+            : base(Name, ID)
         {
-            
+            this.Salary = Salary;
         }
     }
 }

@@ -56,8 +56,6 @@ namespace UseEntities
                     Console.WriteLine(person);
                 }
             }
-
-
         }
     }
 }
