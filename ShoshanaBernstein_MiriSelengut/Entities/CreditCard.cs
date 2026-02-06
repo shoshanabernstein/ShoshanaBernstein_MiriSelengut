@@ -5,22 +5,22 @@ using System.Text;
 namespace Entities
 {
     // A class to create objects for each Credit Card. 
-    internal class CreditCard
+    public class CreditCard
     {
         // The number on card 
-        public int CardNumber { get; set; }
+        public string CardNumber { get; set; }
 
         // The name on card
-        public int CardHolderName { get; set; }
+        public string CardHolderName { get; set; }
 
         // Card's experation month
-        public int ExpMonth { get; set; }
+        public string ExpMonth { get; set; }
 
         // Card's experation year
-        public int ExpYear { get; set; }
+        public string ExpYear { get; set; }
 
         // The CVV on card
-        public int CVV { get; set; }
+        public string CVV { get; set; }
 
     }
 }

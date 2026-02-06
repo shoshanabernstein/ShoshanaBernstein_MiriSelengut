@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="DAL/DAL.csproj" Id="42662ae2-3e67-469d-8604-d9c52eac6edd" />
   <Project Path="Entities/Entities.csproj" Id="7414ba9b-3c0f-49be-bc19-6affde8ab358" />
   <Project Path="ShoshanaBernstein_MiriSelengut/ShoshanaBernstein_MiriSelengut.csproj" Id="ba79920a-80d7-4c40-83e6-cddacdc0f3a1" />
   <Project Path="UseEntities/UseEntities.csproj" Id="ec48190c-d0d2-460d-9944-042f4c8e3b6a" />
