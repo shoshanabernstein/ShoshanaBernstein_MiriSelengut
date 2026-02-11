@@ -10,6 +10,8 @@ namespace DAL
     {
         static void Main(string[] args)
         {
+            ProductDAL products = new ProductDAL();
+
         }
     }
 }
