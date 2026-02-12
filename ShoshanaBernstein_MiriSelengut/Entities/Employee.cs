@@ -10,10 +10,13 @@ namespace Entities
         // Employee's salary
         public int Salary { get; set; }
 
-        public Employee(string Name, int ID, int Salary)
-            : base(Name, ID)
+        public Employee(string Name, int ID, int Salary) : base(Name, ID)
         {
             this.Salary = Salary;
+        }
+        public override string ToString()
+        {
+            return "\nName: " + Name + "\nID: " + ID + "\nSalary: " + Salary;
         }
     }
 }

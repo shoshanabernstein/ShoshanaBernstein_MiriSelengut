@@ -12,5 +12,10 @@ namespace Entities
         {
             
         }
+
+        public override string ToString()
+        {
+            return $"Name: {Name}, ID: {ID}";
+        }
     }
 }

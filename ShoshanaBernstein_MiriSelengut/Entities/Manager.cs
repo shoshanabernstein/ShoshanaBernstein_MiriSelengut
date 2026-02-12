@@ -12,5 +12,10 @@ namespace Entities
         {
             
         }
+
+        public override string ToString()
+        {
+            return "\nName: " + Name + "\nID: " + ID + "\nSalary: " + Salary;
+        }
     }
 }
