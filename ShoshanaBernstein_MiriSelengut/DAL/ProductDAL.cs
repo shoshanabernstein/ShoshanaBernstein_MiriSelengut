@@ -25,7 +25,7 @@ namespace DAL
         //initializes the list to the information in the text file
         public void InitializeList()
         {
-            string[] lines = File.ReadAllLines(@"..\..\DAL\ProductList.txt");
+            string[] lines = File.ReadAllLines(@"../../../DAL/ProductList.txt");
             var index = 0;
 
             //for each line in the file create a new object
@@ -98,16 +98,16 @@ namespace DAL
         #endregion
 
         #region Update
-        //method Update to change some values of a Person
+        //method Update to change some values of a Product
 
-        public void Update(Product tmp)
+        public void Update(Product toUpdate, Product tmp)
         {
           
             //go through the list to find the matching product number
             for( int index = 0; index < list.Count(); index++)
             {
                 //if the match, create a new object and replace the found object
-                if (list[index].ProductNumber == tmp.ProductNumber)
+                if (list[index].ProductNumber == toUpdate.ProductNumber)
                 {
                     Product changedProduct = new Product(tmp.ProductNumber, tmp.ProductName, tmp.CostPerUnit, tmp.AmountInStock);
                     list[index] = changedProduct;
