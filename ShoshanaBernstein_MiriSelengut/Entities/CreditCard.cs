@@ -14,9 +14,6 @@ namespace Entities
         // The name on card
         public string CardHolderName { get; set; }
 
-        // The number on card 
-        public string CardNumber { get; set; }
-
         // Card's experation month
         public string ExpMonth { get; set; }
 

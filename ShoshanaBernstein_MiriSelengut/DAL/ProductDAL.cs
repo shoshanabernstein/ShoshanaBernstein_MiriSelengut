@@ -17,7 +17,7 @@ namespace DAL
         //ctor that initiales list to data in the text file
         public ProductDAL()
         {
-             InitializeList();
+            InitializeList();
         }
         #endregion
 
@@ -31,19 +31,19 @@ namespace DAL
             //for each line in the file create a new object
             foreach (string line in lines)
             {
-                
+
                 string[] parts = line.Split(' ');
                 int productNumber = int.Parse(parts[0]);
                 string productName = parts[1];
                 float costPerUnit = float.Parse(parts[2]);
                 int amountInStock = int.Parse(parts[3]);
-                
+
                 Product newproduct = new Product(productNumber, productName, costPerUnit, amountInStock);
 
                 //add the objects to the list
                 list.Add(newproduct);
             }
-           
+
         }
         #endregion
 
@@ -87,7 +87,7 @@ namespace DAL
                     product.CostPerUnit,
                     product.AmountInStock
                     );
-                
+
                 //add the copied object to newList
                 newList.Add(copyProduct);
             }
@@ -102,9 +102,9 @@ namespace DAL
 
         public void Update(Product tmp)
         {
-          
+
             //go through the list to find the matching product number
-            for( int index = 0; index < list.Count(); index++)
+            for (int index = 0; index < list.Count(); index++)
             {
                 //if the match, create a new object and replace the found object
                 if (list[index].ProductNumber == tmp.ProductNumber)
@@ -122,7 +122,7 @@ namespace DAL
         public void Delete(Product tmp)
         {
             //go thru list to find product whose number matches the number of Person parameter
-            for(int index = 0; index < list.Count();index++)
+            for (int index = 0; index < list.Count(); index++)
             {
                 //if the products numbers match
                 if (list[index].ProductNumber == tmp.ProductNumber)
@@ -132,6 +132,19 @@ namespace DAL
                     break;
                 }
             }
+        }
+        #endregion
+
+        #region Print
+        // method to print the list with specific action
+        public void Print(ProductDAL list, string action)
+        {
+            Console.WriteLine("Products in list " + action + ":");
+            foreach (Product p in list.Read())
+            {
+                Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
+            }
+            Console.WriteLine();
         }
         #endregion
     }

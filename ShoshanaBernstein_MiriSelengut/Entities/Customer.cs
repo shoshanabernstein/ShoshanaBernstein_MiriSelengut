@@ -11,7 +11,6 @@ namespace Entities
         public Customer(string Name, int ID) 
             :base (Name, ID)
         {
-            
         }
 
         public override string ToString()
