@@ -26,7 +26,6 @@ namespace DAL
         public void InitializeList()
         {
             string[] lines = File.ReadAllLines(@"../../../DAL/ProductList.txt");
-            var index = 0;
 
             //for each line in the file create a new object
             foreach (string line in lines)
@@ -93,11 +92,12 @@ namespace DAL
             //if not found return null
             return null;
         }
+        #endregion
 
         #region Read all the list
         //method to return the entire list
 
-        public List<Product> Read()
+        public List<Product> ReadAll()
         {
             //create a new list
             List<Product> newList = new List<Product>();

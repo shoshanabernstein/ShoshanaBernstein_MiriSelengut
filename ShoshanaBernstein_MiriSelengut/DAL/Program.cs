@@ -19,7 +19,7 @@ namespace DAL
             products.Create(piano);
             //print out name of products in list
             Console.WriteLine("Products in list...");
-            foreach (Product p in products.Read())
+            foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
@@ -31,22 +31,22 @@ namespace DAL
             products.Update(updatedPiano);
             //print out name of products in list
             Console.WriteLine("\nProducts in list after piano changed to upright piano");
-            foreach (Product p in products.Read())
+            foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
 
-            //find couch object
- 
+          
             //print out found product
-            Console.WriteLine("\nProduct that was found...\n" + products.Read(1));
+            Console.WriteLine("\nProduct that was found...");
+            Console.WriteLine(products.Read(1));
 
 
             //delete piano from products
             products.Delete(piano);
             //print out name of products in list 
             Console.WriteLine("\nProducts in list after piano was deleted...");
-            foreach (Product p in products.Read())
+            foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
