@@ -6,8 +6,10 @@ using System.Xml.Linq;
 namespace Entities
 {
     // A class to create objects for each Credit Card. 
-    internal class CreditCard
+    public class CreditCard
     {
+        // The number on card 
+        public string CardNumber { get; set; }
 
         // The name on card
         public string CardHolderName { get; set; }

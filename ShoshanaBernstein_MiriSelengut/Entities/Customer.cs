@@ -5,10 +5,11 @@ using System.Text;
 namespace Entities
 {
     // A class to create objects for each Customer. Inherets from Person.
-    internal class Customer : Person
+    public class Customer : Person
     {
-        private int creditCard;
-        public Customer(string Name, int ID) :base (Name, ID)
+        CreditCard creditCard;
+        public Customer(string Name, int ID) 
+            :base (Name, ID)
         {
             
         }

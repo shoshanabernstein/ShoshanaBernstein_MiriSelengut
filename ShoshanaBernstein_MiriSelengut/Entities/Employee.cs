@@ -5,7 +5,7 @@ using System.Text;
 namespace Entities
 {
     // A class to create objects for each Employee. Inherets from Person.
-    internal class Employee : Person
+    public class Employee : Person
     {
         // Employee's salary
         public int Salary { get; set; }
