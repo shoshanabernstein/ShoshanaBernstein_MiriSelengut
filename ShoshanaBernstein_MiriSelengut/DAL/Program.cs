@@ -36,6 +36,12 @@ namespace DAL
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
 
+            //find couch object
+ 
+            //print out found product
+            Console.WriteLine("\nProduct that was found...\n" + products.Read(1));
+
+
             //delete piano from products
             products.Delete(piano);
             //print out name of products in list 
