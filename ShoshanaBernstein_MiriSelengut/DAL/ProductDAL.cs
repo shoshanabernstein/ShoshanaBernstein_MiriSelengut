@@ -100,14 +100,14 @@ namespace DAL
         #region Update
         //method Update to change some values of a Product
 
-        public void Update(Product toUpdate, Product tmp)
+        public void Update(Product tmp)
         {
           
             //go through the list to find the matching product number
             for( int index = 0; index < list.Count(); index++)
             {
                 //if the match, create a new object and replace the found object
-                if (list[index].ProductNumber == toUpdate.ProductNumber)
+                if (list[index].ProductNumber == tmp.ProductNumber)
                 {
                     Product changedProduct = new Product(tmp.ProductNumber, tmp.ProductName, tmp.CostPerUnit, tmp.AmountInStock);
                     list[index] = changedProduct;

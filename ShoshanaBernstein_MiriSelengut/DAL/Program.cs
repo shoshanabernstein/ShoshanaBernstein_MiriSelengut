@@ -26,9 +26,9 @@ namespace DAL
 
 
             //create new paino object
-            Product updatedPiano = new Product(5, "upright paino", 899.00, 45);
+            Product updatedPiano = new Product(4, "upright paino", 789.78, 34);
             //update piano
-            products.Update(piano, updatedPiano);
+            products.Update(updatedPiano);
             //print out name of products in list
             Console.WriteLine("\nProducts in list after piano changed to upright piano");
             foreach (Product p in products.Read())
