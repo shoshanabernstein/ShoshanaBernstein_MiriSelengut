@@ -29,7 +29,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return "\nName:" + ProductName + "\nNumber: " + ProductNumber + "\nCost per unit: " + CostPerUnit + "\nAmount in stock: " + AmountInStock;
+            return "Name:" + ProductName + "\nNumber: " + ProductNumber + "\nCost per unit: " + CostPerUnit + "\nAmount in stock: " + AmountInStock;
         }
     }
 }

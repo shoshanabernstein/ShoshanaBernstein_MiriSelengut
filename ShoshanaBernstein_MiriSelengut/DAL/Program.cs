@@ -11,7 +11,7 @@ namespace DAL
     {
         static void Main(string[] args)
         {
-            
+
             ProductDAL products = new ProductDAL();
             Product piano = new Product(4, "piano", 789.78, 34);
 
@@ -24,23 +24,20 @@ namespace DAL
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
 
-
             //create new paino object
             Product updatedPiano = new Product(4, "upright paino", 789.78, 34);
             //update piano
             products.Update(updatedPiano);
             //print out name of products in list
-            Console.WriteLine("\nProducts in list after piano changed to upright piano");
+            Console.WriteLine("\nProducts in list after piano changed to upright piano...");
             foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
 
-          
             //print out found product
             Console.WriteLine("\nProduct that was found...");
             Console.WriteLine(products.Read(1));
-
 
             //delete piano from products
             products.Delete(piano);
