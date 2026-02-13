@@ -164,7 +164,7 @@ namespace DAL
         public void Print(ProductDAL list, string action)
         {
             Console.WriteLine("Products in list " + action + ":");
-            foreach (Product p in list.Read())
+            foreach (Product p in list.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }

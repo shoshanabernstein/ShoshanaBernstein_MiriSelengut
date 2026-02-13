@@ -20,7 +20,7 @@ namespace DAL
 
             //print out name of products in list
             Console.WriteLine("Products in list...");
-            foreach (Product p in products.Read())
+            foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
@@ -39,7 +39,7 @@ namespace DAL
 
             //print out name of products in list
             Console.WriteLine("\nProducts in list after piano changed to upright piano");
-            foreach (Product p in products.Read())
+            foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
@@ -53,7 +53,7 @@ namespace DAL
 
             //print out name of products in list 
             Console.WriteLine("\nProducts in list after piano was deleted...");
-            foreach (Product p in products.Read())
+            foreach (Product p in products.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
