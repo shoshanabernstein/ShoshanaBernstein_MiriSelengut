@@ -19,7 +19,11 @@ namespace DAL
             products.Create(piano);
 
             //print out name of products in list
-            products.Print(products, "");
+            Console.WriteLine("Products in list...");
+            foreach (Product p in products.Read())
+            {
+                Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
+            }
 
             //Console.WriteLine("Products in list...");
             //foreach (Product p in products.Read())
@@ -34,25 +38,27 @@ namespace DAL
             products.Update(updatedPiano);
 
             //print out name of products in list
-            products.Print(products, "after piano changed to upright piano");
+            Console.WriteLine("\nProducts in list after piano changed to upright piano");
+            foreach (Product p in products.Read())
+            {
+                Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
+            }
 
-            //Console.WriteLine("\nProducts in list after piano changed to upright piano");
-            //foreach (Product p in products.Read())
-            //{
-            //    Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
-            //}
+          
+            //print out found product
+            Console.WriteLine("\nProduct that was found...");
+            Console.WriteLine(products.Read(1));
+
 
             //delete piano from products
             products.Delete(piano);
 
             //print out name of products in list 
-            products.Print(products, "after piano deleted");
-
-            //Console.WriteLine("\nProducts in list after piano was deleted...");
-            //foreach (Product p in products.Read())
-            //{
-            //    Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
-            //}
+            Console.WriteLine("\nProducts in list after piano was deleted...");
+            foreach (Product p in products.Read())
+            {
+                Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
+            }
 
         }
     }

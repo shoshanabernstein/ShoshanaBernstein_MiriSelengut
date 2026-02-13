@@ -26,7 +26,6 @@ namespace DAL
         public void InitializeList()
         {
             string[] lines = File.ReadAllLines(@"../../../DAL/ProductList.txt");
-            var index = 0;
 
             //for each line in the file create a new object
             foreach (string line in lines)
@@ -70,10 +69,35 @@ namespace DAL
         }
         #endregion
 
+        #region Read one Product
+        //method to return one prodcut according to ID
+
+        public Product Read(int productNumber)
+        {
+            //loop thru list checking to see if current product id matches id of parameter
+            for (int index = 0; index < list.Count(); index++)
+            {
+                //if the match, create a new object and replace the found object
+                if (list[index].ProductNumber == productNumber)
+                {
+                    Product foundProduct = new Product(list[index].ProductNumber,
+                        list[index].ProductName,
+                        list[index].CostPerUnit,
+                        list[index].AmountInStock
+                        );
+                    list[index] = foundProduct;
+                    return foundProduct;
+                }
+            }
+            //if not found return null
+            return null;
+        }
+        #endregion
+
         #region Read all the list
         //method to return the entire list
 
-        public List<Product> Read()
+        public List<Product> ReadAll()
         {
             //create a new list
             List<Product> newList = new List<Product>();
