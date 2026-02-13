@@ -44,11 +44,9 @@ namespace DAL
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
             }
 
-          
             //print out found product
             Console.WriteLine("\nProduct that was found...");
             Console.WriteLine(products.Read(1));
-
 
             //delete piano from products
             products.Delete(piano);
