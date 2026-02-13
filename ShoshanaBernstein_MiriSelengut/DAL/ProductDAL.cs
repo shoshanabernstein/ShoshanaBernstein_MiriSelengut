@@ -53,7 +53,11 @@ namespace DAL
             //Check if a product with the same ProductNumber already exists
             bool exists = list.Any(p => p.ProductNumber == tmp.ProductNumber);
             //if it doesn't exit
-            if (!exists)
+            if (exists)
+            {
+                throw new DuplicateProductNumber();
+            }
+            else
             {
                 Product newProduct = new Product(
                     tmp.ProductNumber,
@@ -61,7 +65,6 @@ namespace DAL
                     tmp.CostPerUnit,
                     tmp.AmountInStock
                     );
-
                 //add it to the list
                 list.Add(newProduct);
             }
@@ -90,7 +93,8 @@ namespace DAL
                 }
             }
             //if not found return null
-            return null;
+            throw new ProductNumberNotFound();
+
         }
         #endregion
 
@@ -135,9 +139,10 @@ namespace DAL
                 {
                     Product changedProduct = new Product(tmp.ProductNumber, tmp.ProductName, tmp.CostPerUnit, tmp.AmountInStock);
                     list[index] = changedProduct;
+                    return;
                 }
             }
-
+            throw new ProductNumberNotFound();
         }
         #endregion
 
@@ -153,17 +158,17 @@ namespace DAL
                 {
                     //remove the object from the list
                     list.RemoveAt(index);
-                    break;
+                    return;
                 }
             }
+            throw new ProductNumberNotFound();
         }
         #endregion
 
         #region Print
         // method to print the list with specific action
-        public void Print(ProductDAL list, string action)
+        public void Print(ProductDAL list)
         {
-            Console.WriteLine("Products in list " + action + ":");
             foreach (Product p in list.ReadAll())
             {
                 Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
