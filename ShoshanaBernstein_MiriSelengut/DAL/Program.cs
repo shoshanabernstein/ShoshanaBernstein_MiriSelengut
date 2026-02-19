@@ -15,50 +15,36 @@ namespace DAL
             ProductDAL products = new ProductDAL();
             Product piano = new Product(4, "piano", 789.78, 34);
 
-            //add object piano to products
+            // Add object piano to products
             products.Create(piano);
 
-            //print out name of products in list
+            // Print out name of products in list
             products.Print(products);
 
-            //Console.WriteLine("Products in list...");
-            //foreach (Product p in products.Read())
-            //{
-            //    Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
-            //}
-
-            //create new paino object
+            // Create new paino object
             Product updatedPiano = new Product(4, "upright paino", 789.78, 34);
 
-            //update piano
+            // Update piano
             products.Update(updatedPiano);
 
-            //print out name of products in list
+            // Print out name of products in list
             products.Print(products);
 
-            //Console.WriteLine("\nProducts in list after piano changed to upright piano");
-            //foreach (Product p in products.ReadAll())
-            //{
-            //    Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
-            //}
-
-            //print out found product
+            // Print out found product
             Console.WriteLine("\nProduct that was found:");
             Console.WriteLine(products.Read(2));
 
-            //delete piano from products
+            // Delete piano from products
             products.Delete(piano);
 
-            //print out name of products in list 
+            // Print out name of products in list 
             products.Print(products);
 
-            //Console.WriteLine("\nProducts in list after piano was deleted...");
-            //foreach (Product p in products.ReadAll())
-            //{
-            //    Console.WriteLine(p.ProductName + " " + p.CostPerUnit);
-            //}
+            // Different way to print out list
+            Console.WriteLine("\nNew way to print list.");
+            Console.WriteLine(string.Join("\n", products.ReadAll()));
 
-
+            // Testing exeptions
             Console.WriteLine("\nTesting exceptions:");
 
             Product bookcase = new Product(4, "Sefarim Shrank", 789.78, 34);

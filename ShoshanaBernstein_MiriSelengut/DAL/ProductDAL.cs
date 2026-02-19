@@ -88,7 +88,6 @@ namespace DAL
                         list[index].CostPerUnit,
                         list[index].AmountInStock
                         );
-                    list[index] = foundProduct;
                     return foundProduct;
                 }
             }
