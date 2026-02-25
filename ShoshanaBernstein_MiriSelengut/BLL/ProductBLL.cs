@@ -5,21 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
-using DAL;
+
 
 namespace BLL
 {
     public class ProductBLL
     {
-        ProductDAL objdal = new ProductDAL();
+        ProductDAL ProductDAL;
 
-        // Not sure what we are supposed to do here...
-        #region Read all
-        public List<Product> GetProducts()
+        #region Ctor
+        public ProductBLL(ProductDAL productDAL)
+        {
+            this.ProductDAL = productDAL;
+        }
+        #endregion
+
+        #region Create
+        public void Create(Product tmp)
         {
             try
             {
-                return objdal;
+                ProductDAL.Create(tmp);
             }
             catch
             {
@@ -28,7 +34,64 @@ namespace BLL
         }
         #endregion
 
-        #region Read one
-        public List<Product> GetProdcu
+        #region Read All
+        public List<Product> ReadAll()
+        {
+            try
+            {
+                return ProductDAL.ReadAll();
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region Read One
+        public Product Read(int productNumber)
+        {
+            try
+            {
+                return ProductDAL.Read(productNumber);
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region Update
+        public void Update(Product tmp)
+        {
+            try
+            {
+                ProductDAL.Update(tmp);
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region Delete
+        public void Delete(Product tmp)
+        {
+            try
+            {
+                ProductDAL.Delete(Product tmp);
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        #endregion
     }
 }
