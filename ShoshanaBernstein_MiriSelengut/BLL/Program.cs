@@ -14,6 +14,8 @@ namespace BLL
         {
             // ***Testing HW 7***
 
+            Product couch = new Product(5, "Couch", 850, 20);
+            ProductBLL BLLObject = new ProductBLL(productDAL);
 
             ProductBLL.Create(couch);
         }
