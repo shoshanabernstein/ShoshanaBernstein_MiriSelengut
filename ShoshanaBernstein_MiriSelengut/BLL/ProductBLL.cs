@@ -11,9 +11,11 @@ namespace BLL
 {
     public class ProductBLL
     {
+        // instance of ProductDAL in BLL 
         ProductDAL ProductDAL;
 
         #region Ctor
+        // BLL ctor creating an object of ProductDAL
         public ProductBLL(ProductDAL productDAL)
         {
             this.ProductDAL = productDAL;
@@ -21,6 +23,7 @@ namespace BLL
         #endregion
 
         #region Create
+        // method to create products (and throw exception otherwise)
         public void Create(Product tmp)
         {
             try
@@ -35,6 +38,7 @@ namespace BLL
         #endregion
 
         #region Read All
+        // method to read all prodcuts in list (and throw exception otherwise)
         public List<Product> ReadAll()
         {
             try
@@ -50,6 +54,7 @@ namespace BLL
         #endregion
 
         #region Read One
+        // method to read product number (and throw exception otherwise)
         public Product Read(int productNumber)
         {
             try
@@ -65,6 +70,7 @@ namespace BLL
         #endregion
 
         #region Update
+        // method to update products (and throw exception otherwise)
         public void Update(Product tmp)
         {
             try
@@ -80,11 +86,12 @@ namespace BLL
         #endregion
 
         #region Delete
+        // method to delete products (and throw exception otherwise)
         public void Delete(Product tmp)
         {
             try
             {
-                ProductDAL.Delete(Product tmp);
+                ProductDAL.Delete(tmp);
 
             }
             catch

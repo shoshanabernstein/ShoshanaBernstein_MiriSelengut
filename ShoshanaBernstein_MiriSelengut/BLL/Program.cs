@@ -12,6 +12,10 @@ namespace BLL
     {
         static void Main(string[] args)
         {
+            // ***Testing HW 7***
+
+
+            ProductBLL.Create(couch);
         }
     }
 }
