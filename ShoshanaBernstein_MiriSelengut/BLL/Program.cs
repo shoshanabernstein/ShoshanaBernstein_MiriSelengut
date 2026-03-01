@@ -16,7 +16,7 @@ namespace BLL
             ProductBLL productBLL = new ProductBLL(new ProductDAL() );
 
             // Adds couch
-            Product couch = new Product(5, "couch", 500.98, 20);
+            Product couch = new Product(5, "couch", 500.98m, 20);
             productBLL.Create(couch);
 
             // Print updated couch
@@ -25,7 +25,7 @@ namespace BLL
             Console.WriteLine();
 
             // Update couch 
-            Product updateCouch = new Product(5, "couch", 907.78, 20);
+            Product updateCouch = new Product(5, "couch", 907.78m, 20);
             productBLL.Update(updateCouch);
 
             // Print updated couch

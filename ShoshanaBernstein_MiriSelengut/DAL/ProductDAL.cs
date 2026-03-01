@@ -35,7 +35,7 @@ namespace DAL
                 string[] parts = line.Split(' ');
                 int productNumber = int.Parse(parts[0]);
                 string productName = parts[1];
-                float costPerUnit = float.Parse(parts[2]);
+                decimal costPerUnit = decimal.Parse(parts[2]);
                 int amountInStock = int.Parse(parts[3]);
 
                 Product newproduct = new Product(productNumber, productName, costPerUnit, amountInStock);
@@ -113,7 +113,7 @@ namespace DAL
         }
         #endregion
 
-            #region Read all the list
+        #region Read all the list
             //method to return the entire list
 
         public List<Product> ReadAll()

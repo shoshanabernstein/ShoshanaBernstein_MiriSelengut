@@ -13,7 +13,7 @@ namespace DAL
         {
 
             ProductDAL products = new ProductDAL();
-            Product piano = new Product(4, "piano", 789.78, 34);
+            Product piano = new Product(4, "piano", 789.78m, 34);
 
             // Add object piano to products
             products.Create(piano);
@@ -22,7 +22,7 @@ namespace DAL
             products.Print(products);
 
             // Create new paino object
-            Product updatedPiano = new Product(4, "upright paino", 789.78, 34);
+            Product updatedPiano = new Product(4, "upright paino", 789.78m, 34);
 
             // Update piano
             products.Update(updatedPiano);
@@ -47,9 +47,9 @@ namespace DAL
             // Testing exeptions
             Console.WriteLine("\nTesting exceptions:");
 
-            Product bookcase = new Product(4, "Sefarim Shrank", 789.78, 34);
-            Product duplicateBookcase = new Product(4, "Second Sefarim Shrank", 789.78, 34);
-            Product nullBookcase = new Product(5, "Non-Existent bookcase", 889.99, 20);
+            Product bookcase = new Product(4, "Sefarim Shrank", 789.78m, 34);
+            Product duplicateBookcase = new Product(4, "Second Sefarim Shrank", 789.78m, 34);
+            Product nullBookcase = new Product(5, "Non-Existent bookcase", 889.99m, 20);
 
             products.Create(bookcase);
             products.Read(8);

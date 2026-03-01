@@ -14,12 +14,12 @@ namespace Entities
         public string ProductName { get; set; }
 
         // Product's cost per unit
-        public double CostPerUnit { get; set; }
+        public decimal CostPerUnit { get; set; }
 
         // Amount of product in stock
         public int AmountInStock { get; set; }
 
-        public Product(int ProductNumber, string ProductName, double CostPerUnit, int AmountInStock)
+        public Product(int ProductNumber, string ProductName, decimal CostPerUnit, int AmountInStock)
         {
             this.ProductNumber = ProductNumber;
             this.ProductName = ProductName;
