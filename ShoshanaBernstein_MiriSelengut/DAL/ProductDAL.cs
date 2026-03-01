@@ -74,8 +74,9 @@ namespace DAL
             }
             catch (DuplicateProductNumber ex)
             {
-                Console.WriteLine("Caught in Create in ProductDAL");
+                Console.WriteLine("\nCaught in Create in ProductDAL");
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("Throwing to ProductBLL");
                 throw;
             }
         }
@@ -106,8 +107,9 @@ namespace DAL
             }
             catch (ProductNumberNotFound ex)
             {
-                Console.WriteLine("Caught in Read one in ProductDAL");
+                Console.WriteLine("\nCaught in Read one in ProductDAL");
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("Throwing to ProductBLL");
                 throw;
             }
         }
@@ -163,8 +165,9 @@ namespace DAL
             }
             catch (ProductNumberNotFound ex)
             {
-                Console.WriteLine("Caught in Update in ProductDAL");
+                Console.WriteLine("\nCaught in Update in ProductDAL");
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("Throwing to ProductBLL");
                 throw;
             }
         }
@@ -191,8 +194,9 @@ namespace DAL
             }
             catch (ProductNumberNotFound ex)
             {
-                Console.WriteLine("Caught in Delete in ProductDAL");
+                Console.WriteLine("\nCaught in Delete in ProductDAL");
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("Throwing to ProductBLL");
                 throw;
             }
         }
