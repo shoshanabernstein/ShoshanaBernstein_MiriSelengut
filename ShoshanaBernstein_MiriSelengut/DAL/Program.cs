@@ -52,51 +52,53 @@ namespace DAL
             Product nullBookcase = new Product(5, "Non-Existent bookcase", 889.99, 20);
 
             products.Create(bookcase);
+            products.Read(8);
 
             // Try to add a product with a duplicate product number
-            try
-            {
-                products.Create(duplicateBookcase);
-            }
-            catch (DuplicateProductNumber e)
-            {
-                Console.WriteLine("*Error because tried to add a product with already used product number");
-                Console.WriteLine(e.Message + "\nPlease re-enter the product with a different product number");
-            }
+            //try
+            //{
+            //    products.Create(duplicateBookcase);
+            //}
+            //catch (DuplicateProductNumber e)
+            //{
+            //    Console.WriteLine("*Error because tried to add a product with already used product number");
+            //    Console.WriteLine(e.Message + "\nPlease re-enter the product with a different product number");
+            //}
 
-            // Try to read a product with a product number that doesn't exist
-            try
-            {
-                products.Read(5);
-                Console.WriteLine(products.Read(4));
-            }
-            catch (ProductNumberNotFound e)
-            {
-                Console.WriteLine("*Error because tried to read a non-existent bookcase");
-                Console.WriteLine(e.Message + "\nPlease try a different product number");
-            }
+            //// Try to read a product with a product number that doesn't exist
+            //try
+            //{
+            //    products.Read(5);
+            //    Console.WriteLine(products.Read(4));
+            //}
+            //catch (ProductNumberNotFound e)
+            //{
+            //    Console.WriteLine("*Error because tried to read a non-existent bookcase");
+            //    Console.WriteLine(e.Message + "\nPlease try a different product number");
+            //}
 
-            // Try to update a product with a product number that doesn't exist
-            try
-            {
-                products.Update(nullBookcase);
-            }
-            catch (ProductNumberNotFound e)
-            {
-                Console.WriteLine("*Error because tried to update a non-existent bookcase");
-                Console.WriteLine(e.Message + "\nPlease try a different product number");
-            }
+            //products.Update(nullBookcase);
+            //// Try to update a product with a product number that doesn't exist
+            //try
+            //{
+                
+            //}
+            //catch (ProductNumberNotFound e)
+            //{
+            //    Console.WriteLine("*Error because tried to update a non-existent bookcase");
+            //    Console.WriteLine(e.Message + "\nPlease try a different product number");
+            //}
 
-            // Try to delete a product with a product number that doesn't exist
-            try
-            {
-                products.Delete(nullBookcase);
-            }
-            catch (ProductNumberNotFound e)
-            {
-                Console.WriteLine("*Error because tried to delete non-existent bookcase");
-                Console.WriteLine(e.Message + "\nPlease try a different product number");
-            }
+            //// Try to delete a product with a product number that doesn't exist
+            //try
+            //{
+            //    products.Delete(nullBookcase);
+            //}
+            //catch (ProductNumberNotFound e)
+            //{
+            //    Console.WriteLine("*Error because tried to delete non-existent bookcase");
+            //    Console.WriteLine(e.Message + "\nPlease try a different product number");
+            //}
         }
     }
 }

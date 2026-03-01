@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,25 +51,33 @@ namespace DAL
         //method to add a new object to list
         public void Create(Product tmp)
         {
-            //Check if a product with the same ProductNumber already exists
-            bool exists = list.Any(p => p.ProductNumber == tmp.ProductNumber);
-            //if it doesn't exit
-            if (exists)
+            try
             {
-                throw new DuplicateProductNumber();
+                //Check if a product with the same ProductNumber already exists
+                bool exists = list.Any(p => p.ProductNumber == tmp.ProductNumber);
+                //if it doesn't exit
+                if (exists)
+                {
+                    throw new DuplicateProductNumber();
+                }
+                else
+                {
+                    Product newProduct = new Product(
+                        tmp.ProductNumber,
+                        tmp.ProductName,
+                        tmp.CostPerUnit,
+                        tmp.AmountInStock
+                        );
+                    //add it to the list
+                    list.Add(newProduct);
+                }
             }
-            else
+            catch (DuplicateProductNumber ex)
             {
-                Product newProduct = new Product(
-                    tmp.ProductNumber,
-                    tmp.ProductName,
-                    tmp.CostPerUnit,
-                    tmp.AmountInStock
-                    );
-                //add it to the list
-                list.Add(newProduct);
+                Console.WriteLine("Caught in Create in ProductDAL");
+                Console.WriteLine(ex.Message);
+                throw;
             }
-
         }
         #endregion
 
@@ -77,31 +86,39 @@ namespace DAL
 
         public Product Read(int productNumber)
         {
-            //loop thru list checking to see if current product id matches id of parameter
-            for (int index = 0; index < list.Count(); index++)
+            try
             {
-                //if the match, create a new object and replace the found object
-                if (list[index].ProductNumber == productNumber)
+                //loop thru list checking to see if current product id matches id of parameter
+                for (int index = 0; index < list.Count(); index++)
                 {
-                    Product foundProduct = new Product(list[index].ProductNumber,
-                        list[index].ProductName,
-                        list[index].CostPerUnit,
-                        list[index].AmountInStock
-                        );
-                    return foundProduct;
+                    //if the match, create a new object and replace the found object
+                    if (list[index].ProductNumber == productNumber)
+                    {
+                        Product foundProduct = new Product(list[index].ProductNumber,
+                            list[index].ProductName,
+                            list[index].CostPerUnit,
+                            list[index].AmountInStock
+                            );
+                        return foundProduct;
+                    }
                 }
+                throw new ProductNumberNotFound();
             }
-            //if not found return null
-            throw new ProductNumberNotFound();
-
+            catch (ProductNumberNotFound ex)
+            {
+                Console.WriteLine("Caught in update in ProductDAL");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
         #endregion
 
-        #region Read all the list
-        //method to return the entire list
+            #region Read all the list
+            //method to return the entire list
 
         public List<Product> ReadAll()
         {
+
             //create a new list
             List<Product> newList = new List<Product>();
 
@@ -129,19 +146,27 @@ namespace DAL
 
         public void Update(Product tmp)
         {
-
-            //go through the list to find the matching product number
-            for (int index = 0; index < list.Count(); index++)
+            try
             {
-                //if the match, create a new object and replace the found object
-                if (list[index].ProductNumber == tmp.ProductNumber)
+                //go through the list to find the matching product number
+                for (int index = 0; index < list.Count(); index++)
                 {
-                    Product changedProduct = new Product(tmp.ProductNumber, tmp.ProductName, tmp.CostPerUnit, tmp.AmountInStock);
-                    list[index] = changedProduct;
-                    return;
+                    //if the match, create a new object and replace the found object
+                    if (list[index].ProductNumber == tmp.ProductNumber)
+                    {
+                        Product changedProduct = new Product(tmp.ProductNumber, tmp.ProductName, tmp.CostPerUnit, tmp.AmountInStock);
+                        list[index] = changedProduct;
+                        return;
+                    }
                 }
+                throw new ProductNumberNotFound();
             }
-            throw new ProductNumberNotFound();
+            catch (ProductNumberNotFound ex)
+            {
+                Console.WriteLine("Caught in update in ProductDAL");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
         #endregion
 
@@ -149,18 +174,27 @@ namespace DAL
         // method to Delete a product from the list
         public void Delete(Product tmp)
         {
-            //go thru list to find product whose number matches the number of Person parameter
-            for (int index = 0; index < list.Count(); index++)
+            try
             {
-                //if the products numbers match
-                if (list[index].ProductNumber == tmp.ProductNumber)
+                //go thru list to find product whose number matches the number of Person parameter
+                for (int index = 0; index < list.Count(); index++)
                 {
-                    //remove the object from the list
-                    list.RemoveAt(index);
-                    return;
+                    //if the products numbers match
+                    if (list[index].ProductNumber == tmp.ProductNumber)
+                    {
+                        //remove the object from the list
+                        list.RemoveAt(index);
+                        return;
+                    }
                 }
+                throw new ProductNumberNotFound();
             }
-            throw new ProductNumberNotFound();
+            catch (ProductNumberNotFound ex)
+            {
+                Console.WriteLine("Caught in Read in ProductDAL");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
         #endregion
 
@@ -175,5 +209,6 @@ namespace DAL
             Console.WriteLine();
         }
         #endregion
+
     }
 }
