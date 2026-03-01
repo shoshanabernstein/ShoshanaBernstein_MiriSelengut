@@ -15,18 +15,33 @@ namespace BLL
             // ***Testing HW 7***
             ProductBLL productBLL = new ProductBLL(new ProductDAL() );
 
-            Product couch = new Product(1, "couch", 500.98, 20);
-
             // Adds couch
+            Product couch = new Product(5, "couch", 500.98, 20);
             productBLL.Create(couch);
-            Console.WriteLine(productBLL.ReadAll());
 
-            //productBLL.Update(couch);
-            //Console.WriteLine(productBLL.ReadAll());
+            // Print updated couch
+            Console.WriteLine("Original Couch");
+            Console.WriteLine(productBLL.Read(5));
+            Console.WriteLine();
+
+            // Update couch 
+            Product updateCouch = new Product(5, "couch", 907.78, 20);
+            productBLL.Update(updateCouch);
+
+            // Print updated couch
+            Console.WriteLine("Updated Couch");
+            Console.WriteLine(productBLL.Read(5));
+            Console.WriteLine();
+
+            // Delete couch 
+            productBLL.Update(couch);
 
 
-            //productBLL.Delete(couch);
-            //Console.WriteLine(productBLL.Read(couch.ProductNumber));
+            // Print all products
+            ProductDAL products = new ProductDAL();
+            Console.WriteLine("All Products");
+            Console.WriteLine(string.Join("\n", products.ReadAll()));
+            //where ReadAll( ) is a method from that gets all the Products
 
         }
     }
