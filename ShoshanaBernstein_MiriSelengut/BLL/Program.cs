@@ -13,7 +13,7 @@ namespace BLL
         static void Main(string[] args)
         {
             // ***Testing HW 7***
-            ProductBLL productBLL = new ProductBLL(new ProductDAL() );
+            ProductBLL productBLL = new ProductBLL(new ProductDAL());
 
             // Adds couch
             Product couch = new Product(5, "couch", 500.98m, 20);
@@ -42,6 +42,16 @@ namespace BLL
             Console.WriteLine("All Products");
             Console.WriteLine(string.Join("\n", products.ReadAll()));
             //where ReadAll( ) is a method from that gets all the Products
+
+            // Testing Exeptions
+            Console.WriteLine("\n***Testing Exeptions***");
+
+            // Create object with the same productid 
+            Product copyCouch = new Product(5, "copy couch", 907.78m, 20);
+            productBLL.Create(copyCouch);
+
+            // Search for productid that doesn't exist
+            productBLL.Read(12);
 
         }
     }

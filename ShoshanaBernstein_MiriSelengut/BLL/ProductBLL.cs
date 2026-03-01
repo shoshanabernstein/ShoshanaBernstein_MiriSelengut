@@ -33,7 +33,7 @@ namespace BLL
             }
             catch (Exception ex) 
             {
-                Console.WriteLine("Caught in create in Product BLL");
+                Console.WriteLine("Caught in Create in Product BLL");
                 Console.WriteLine(ex.Message);
             }
         }
@@ -49,7 +49,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in create in Product BLL");
+                Console.WriteLine("Caught in Read All in Product BLL");
                 Console.WriteLine(ex.Message);
                 return null;
             }
@@ -67,7 +67,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in create in Product BLL");
+                Console.WriteLine("Caught in Read in Product BLL");
                 Console.WriteLine(ex.Message);
                 return null;
             }
@@ -85,7 +85,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in create in Product BLL");
+                Console.WriteLine("Caught in Update in Product BLL");
                 Console.WriteLine(ex.Message);
             }
         }
@@ -102,7 +102,7 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in create in Product BLL");
+                Console.WriteLine("Caught in Delete in Product BLL");
                 Console.WriteLine(ex.Message);
             }
         }

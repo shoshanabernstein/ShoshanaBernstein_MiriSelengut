@@ -106,7 +106,7 @@ namespace DAL
             }
             catch (ProductNumberNotFound ex)
             {
-                Console.WriteLine("Caught in update in ProductDAL");
+                Console.WriteLine("Caught in Read one in ProductDAL");
                 Console.WriteLine(ex.Message);
                 throw;
             }
@@ -163,7 +163,7 @@ namespace DAL
             }
             catch (ProductNumberNotFound ex)
             {
-                Console.WriteLine("Caught in update in ProductDAL");
+                Console.WriteLine("Caught in Update in ProductDAL");
                 Console.WriteLine(ex.Message);
                 throw;
             }
@@ -191,7 +191,7 @@ namespace DAL
             }
             catch (ProductNumberNotFound ex)
             {
-                Console.WriteLine("Caught in Read in ProductDAL");
+                Console.WriteLine("Caught in Delete in ProductDAL");
                 Console.WriteLine(ex.Message);
                 throw;
             }
