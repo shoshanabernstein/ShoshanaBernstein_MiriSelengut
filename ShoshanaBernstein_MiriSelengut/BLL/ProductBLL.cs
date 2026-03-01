@@ -43,13 +43,18 @@ namespace BLL
         // method to read all prodcuts in list (and throw exception otherwise)
         public List<Product> ReadAll()
         {
-            return ProductDAL.ReadAll();
-           
+            try
+            {
+                return ProductDAL.ReadAll();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Caught in create in Product BLL");
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
         #endregion
-
-
-
 
         #region Read One
         // method to read product number (and throw exception otherwise)
@@ -64,12 +69,10 @@ namespace BLL
             {
                 Console.WriteLine("Caught in create in Product BLL");
                 Console.WriteLine(ex.Message);
+                return null;
             }
         }
         #endregion
-
-
-
 
         #region Update
         // method to update products (and throw exception otherwise)
