@@ -33,8 +33,9 @@ namespace BLL
             }
             catch (Exception ex) 
             {
-                Console.WriteLine("Caught in Create in Product BLL");
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine("Caught in Create in Product BLL");
+                //Console.WriteLine(ex.Message);
+                throw;
             }
         }
         #endregion
@@ -49,9 +50,9 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in Read All in Product BLL");
-                Console.WriteLine(ex.Message);
-                return null;
+                //Console.WriteLine("Caught in Read All in Product BLL");
+                //Console.WriteLine(ex.Message);
+                throw;
             }
         }
         #endregion
@@ -67,9 +68,9 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in Read in Product BLL");
-                Console.WriteLine(ex.Message);
-                return null;
+                //Console.WriteLine("Caught in Read in Product BLL");
+                //Console.WriteLine(ex.Message);
+                throw;
             }
         }
         #endregion
@@ -85,8 +86,9 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in Update in Product BLL");
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine("Caught in Update in Product BLL");
+                //Console.WriteLine(ex.Message);
+                throw;
             }
         }
         #endregion
@@ -102,8 +104,9 @@ namespace BLL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Caught in Delete in Product BLL");
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine("Caught in Delete in Product BLL");
+                //Console.WriteLine(ex.Message);
+                throw;
             }
         }
         #endregion

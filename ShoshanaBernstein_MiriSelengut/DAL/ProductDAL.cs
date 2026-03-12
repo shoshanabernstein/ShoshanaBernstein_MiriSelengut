@@ -13,12 +13,16 @@ namespace DAL
     public class ProductDAL
     {
         static List<Product> list = new List<Product>();
+        static bool IsRead = false;
 
         #region Ctor
         //ctor that initiales list to data in the text file
         public ProductDAL()
         {
-            InitializeList();
+            if (!IsRead)
+            {
+                InitializeList();
+            }
         }
         #endregion
 
@@ -42,6 +46,7 @@ namespace DAL
 
                 //add the objects to the list
                 list.Add(newproduct);
+                IsRead = true;
             }
 
         }
