@@ -34,6 +34,7 @@
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.CreateGrpBx = new System.Windows.Forms.GroupBox();
+            this.CloseCreateGrpBxBtn = new System.Windows.Forms.Button();
             this.EnterBtn = new System.Windows.Forms.Button();
             this.AmountInStockLbl = new System.Windows.Forms.Label();
             this.AmountInStockTxtBx = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.ProductIDTxtBx = new System.Windows.Forms.TextBox();
             this.ProductNameLbl = new System.Windows.Forms.Label();
             this.ProductNameTxtBx = new System.Windows.Forms.TextBox();
-            this.CloseCreateGrpBxBtn = new System.Windows.Forms.Button();
             this.CreateGrpBx.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +85,7 @@
             this.UpdateBtn.TabIndex = 3;
             this.UpdateBtn.Text = "Update a product";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -94,6 +95,7 @@
             this.DeleteBtn.TabIndex = 4;
             this.DeleteBtn.Text = "Delete a product";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // CreateGrpBx
             // 
@@ -114,6 +116,16 @@
             this.CreateGrpBx.TabStop = false;
             this.CreateGrpBx.Text = "Add a new product";
             this.CreateGrpBx.Enter += new System.EventHandler(this.CreateGrpBx_Enter);
+            // 
+            // CloseCreateGrpBxBtn
+            // 
+            this.CloseCreateGrpBxBtn.Location = new System.Drawing.Point(11, 180);
+            this.CloseCreateGrpBxBtn.Name = "CloseCreateGrpBxBtn";
+            this.CloseCreateGrpBxBtn.Size = new System.Drawing.Size(75, 25);
+            this.CloseCreateGrpBxBtn.TabIndex = 9;
+            this.CloseCreateGrpBxBtn.Text = "Close";
+            this.CloseCreateGrpBxBtn.UseVisualStyleBackColor = true;
+            this.CloseCreateGrpBxBtn.Click += new System.EventHandler(this.CloseCreateGrpBxBtn_Click);
             // 
             // EnterBtn
             // 
@@ -189,16 +201,6 @@
             this.ProductNameTxtBx.Name = "ProductNameTxtBx";
             this.ProductNameTxtBx.Size = new System.Drawing.Size(126, 22);
             this.ProductNameTxtBx.TabIndex = 0;
-            // 
-            // CloseCreateGrpBxBtn
-            // 
-            this.CloseCreateGrpBxBtn.Location = new System.Drawing.Point(11, 180);
-            this.CloseCreateGrpBxBtn.Name = "CloseCreateGrpBxBtn";
-            this.CloseCreateGrpBxBtn.Size = new System.Drawing.Size(75, 25);
-            this.CloseCreateGrpBxBtn.TabIndex = 9;
-            this.CloseCreateGrpBxBtn.Text = "Close";
-            this.CloseCreateGrpBxBtn.UseVisualStyleBackColor = true;
-            this.CloseCreateGrpBxBtn.Click += new System.EventHandler(this.CloseCreateGrpBxBtn_Click);
             // 
             // CRUDsMenu
             // 
