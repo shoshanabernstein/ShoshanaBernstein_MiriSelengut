@@ -8,9 +8,14 @@ namespace Entities
     public class Customer : Person
     {
         CreditCard creditCard;
-        public Customer(string Name, int ID) 
-            :base (Name, ID)
+        public string CustomerName { get; set; }  // ✔ property
+        public int CustomerID { get; set; }  // ✔ property
+
+        public Customer(string CustomerName, int CustomerID) 
+            :base (CustomerName, CustomerID)
         {
+            this.CustomerName = CustomerName;
+            this.CustomerID = CustomerID;
         }
 
         public override string ToString()
