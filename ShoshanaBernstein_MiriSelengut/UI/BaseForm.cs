@@ -15,46 +15,68 @@ namespace UI
     public partial class BaseForm : Form
     {
 
-        public ProductDAL productDAL;
-        public ProductBLL productBLL;
-        public int EnterFlag = 0;
-        public const int CreateFlag = 1;
-        public const int ReadAllFlag = 2;
-        public const int ReadOneFlag = 3;
-        public const int UpdateFlag = 4;
-        public const int DeleteFlag = 5;
-
         public BaseForm()
         {
             InitializeComponent();
         }
 
-        public virtual void BaseCreateBtn ()
-        {
+        # region Create
+        public virtual void BaseCreateBtn () { }
 
-        }
         private void CreateBtn_Click(object sender, EventArgs e)
         {
             BaseCreateBtn();
         }
 
+        #endregion
+
+        #region Enter
+        public virtual void BaseEnterBtn() { }
         private void EnterBtn_Click(object sender, EventArgs e)
         {
-            
+            BaseEnterBtn();
         }
+        #endregion
 
-        public virtual void BaseEnterBtn()
-        {
+        #region ReadAll
+        public virtual void BaseReadAllBtn() { }
 
-        }
-        public virtual void BaseReadAllBtn()
-        {
-
-        }
         private void ReadAllBtn_Click(object sender, EventArgs e)
         {
-            EnterFlag = ReadAllFlag;
             BaseReadAllBtn();
         }
+        #endregion
+
+        #region Read
+        private void ReadBtn_Click(object sender, EventArgs e)
+        {
+            BaseReadBtn();
+        }
+        public virtual void BaseReadBtn() { }
+        #endregion
+
+        #region Update
+        public virtual void BaseUpdateBtn() { }
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            BaseUpdateBtn();
+        }
+        #endregion
+
+        #region delete
+        public virtual void BaseDeleteBtn() { }
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            BaseDeleteBtn();
+        }
+        #endregion
+
+        #region close
+        public virtual void BaseCloseBtn() { Close(); }
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            BaseCloseBtn();
+        }
+        #endregion
     }
 }

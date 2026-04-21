@@ -45,6 +45,7 @@
             this.DeleteBtn.TabIndex = 9;
             this.DeleteBtn.Text = "Delete";
             this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // UpdateBtn
             // 
@@ -54,6 +55,7 @@
             this.UpdateBtn.TabIndex = 8;
             this.UpdateBtn.Text = "Update";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // ReadBtn
             // 
@@ -63,6 +65,7 @@
             this.ReadBtn.TabIndex = 7;
             this.ReadBtn.Text = "Search";
             this.ReadBtn.UseVisualStyleBackColor = true;
+            this.ReadBtn.Click += new System.EventHandler(this.ReadBtn_Click);
             // 
             // ReadAllBtn
             // 
@@ -102,6 +105,7 @@
             this.CloseBtn.TabIndex = 11;
             this.CloseBtn.Text = "Close";
             this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // BaseForm
             // 
