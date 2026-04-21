@@ -18,11 +18,11 @@ namespace UI
         ProductDAL productDAL;
         ProductBLL productBLL;
         int enterFlag = 0;
-        const int createFlag = 1;
-        const int readAllFlag = 2;
-        const int readOneFlag = 3;
-        const int updateFlag = 4;
-        const int deleteFlag = 5;
+        public const int createFlag = 1;
+        public const int readAllFlag = 2;
+        public const int readOneFlag = 3;
+        public const int updateFlag = 4;
+        public const int deleteFlag = 5;
 
         public CRUDsMenu()
         {
@@ -131,11 +131,8 @@ namespace UI
         #region Enter Button
         private void EnterBtn_Click(object sender, EventArgs e)
         {
-
-
             switch (enterFlag)
             {
-
                 case createFlag:
                     try
                     {
@@ -273,6 +270,9 @@ namespace UI
 
         }
 
+        private void CRUDsMenu_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

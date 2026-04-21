@@ -10,11 +10,12 @@ namespace BLL
         // instance of CustomerDAL in BLL 
         private CustomerDAL customerDAL;
 
+
         #region Ctor
         // BLL ctor creating an object of CustomerDAL
-        public CustomerBLL(CustomerDAL customerDAL)
+        public CustomerBLL()
         {
-            this.customerDAL = customerDAL;
+            this.customerDAL = CustomerDAL.Instance;
         }
         #endregion
 

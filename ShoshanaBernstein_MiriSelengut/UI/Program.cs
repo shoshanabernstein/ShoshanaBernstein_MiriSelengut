@@ -18,7 +18,7 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CRUDsMenu());
+            Application.Run(new ProductForm());
 
         }
     }

@@ -13,16 +13,14 @@ namespace DAL
     public class CustomerDAL
     {
         static List<Customer> list = new List<Customer>();
-        static bool IsRead = false;
-
+        static readonly CustomerDAL instance = new CustomerDAL();
+        public static CustomerDAL Instance { get { return instance; } }
+        
         #region Ctor
-        //ctor that initiales list to customers in the text file
-        public CustomerDAL()
+        //ctor that intializes list to customers in the text file
+        private CustomerDAL()
         {
-            if (!IsRead)
-            {
-                InitializeList();
-            }
+            InitializeList();
         }
         #endregion
 
@@ -43,7 +41,6 @@ namespace DAL
 
                 //add the objects to the list
                 list.Add(newCustomer);
-                IsRead = true;
             }
 
         }
@@ -137,7 +134,7 @@ namespace DAL
                     if (list[i].CustomerID == tmp.CustomerID)
                     {
                         list[i] = new Customer(tmp.CustomerName, tmp.CustomerID);
-                          return;
+                        return;
                     }
                 }
 

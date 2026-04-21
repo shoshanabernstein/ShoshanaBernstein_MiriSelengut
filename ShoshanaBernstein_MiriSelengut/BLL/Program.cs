@@ -60,7 +60,7 @@ namespace BLL
             // ***Testing HW 9***
 
             // Create BLL object with DAL dependency
-            CustomerBLL customerBLL = new CustomerBLL(new CustomerDAL());
+            CustomerBLL customerBLL = new CustomerBLL();
 
             // Adds a customer
             Customer Sarala = new Customer("Sarala", 101);
@@ -72,7 +72,7 @@ namespace BLL
             Console.WriteLine();
 
             // Print all customers (should be empty now)
-            CustomerDAL customers = new CustomerDAL();
+            CustomerDAL customers = CustomerDAL.Instance;
             Console.WriteLine("All Customers");
             Console.WriteLine(string.Join("\n", customers.ReadAll()));
             Console.WriteLine();
