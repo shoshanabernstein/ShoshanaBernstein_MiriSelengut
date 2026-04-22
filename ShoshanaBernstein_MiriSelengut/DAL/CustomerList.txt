@@ -1,3 +1,3 @@
-Miri 1
-Shoshana 2
-Shrags 3
+Miri 1 creditcard
+Shoshana 2 card
+Shrags 3 credit card

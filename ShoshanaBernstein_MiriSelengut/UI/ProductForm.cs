@@ -28,6 +28,7 @@ namespace UI
 
         delegate void EnterButton();
         EnterButton enter;
+
         public override void BaseEnterBtn()
         {
             enter();
@@ -51,7 +52,6 @@ namespace UI
                 decimal costPerUnit = decimal.Parse(CostPerUnitTxtBx.Text);
                 int amountInStock = int.Parse(AmountInStockTxtBx.Text);
                 Product newProduct = new Product(productID, productName, costPerUnit, amountInStock);
-                MessageBox.Show("got to here");
                 productBLL.Create(newProduct);
                 MessageBox.Show("A new product has been added");
 
@@ -215,7 +215,7 @@ namespace UI
         }
         #endregion
 
-        #region update
+        #region Update
         public override void BaseUpdateBtn()
         {
             enter = UpdateEnter;

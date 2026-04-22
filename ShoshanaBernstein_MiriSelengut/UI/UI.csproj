@@ -78,6 +78,9 @@
     <EmbeddedResource Include="CRUDsMenu.resx">
       <DependentUpon>CRUDsMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -16,145 +16,283 @@ namespace UI
 {
     public partial class CustomerForm : BaseForm
     {
+        CustomerDAL customerDAL;
+        CustomerBLL customerBLL;
+
         public CustomerForm()
         {
             InitializeComponent();
+            CreateGrpBx.Visible = false;
+            CreditCardGrpBx.Visible = false;
+            customerDAL = CustomerDAL.Instance;
+            customerBLL = new CustomerBLL();
         }
 
-        //delegate void EnterButton();
-        //EnterButton enter;
+        delegate void EnterButton();
+        EnterButton enter;
 
-        //public override void BaseCreateBtn()
-        //{
-        //    CreateGrpBx.Visible = true;
-        //    CreateGrpBx.Text = "Add a new product";
-        //    enter = CreateEnter;
-        //}
+        public override void BaseEnterBtn()
+        {
+            enter();
+        }
+
+        #region Create
+        public override void BaseCreateBtn()
+        {
+            CreateGrpBx.Visible = true;
+            CreditCardGrpBx.Visible = true;
+            CreateGrpBx.Text = "Add a new customer";
+            enter = CreateEnter;
+        }
+        private void CreateEnter()
+        {
+            try
+            {
+                // enter button from create
+                string customerName = CustomerNameTxtBx.Text;
+                int customerID = int.Parse(CustomerIDTxtBx.Text);
+                string cardNumber = CardNumberTxtBx.Text;
+                string cardHolder = CardHolderNameTxtBx.Text;
+                string cvv = CVVTxtBx.Text;
+                string expMonth = ExpMonthTxtBx.Text;
+                string expYear = ExpYearTxtBx.Text;
+
+                CreditCard newCard = new CreditCard(cardHolder, cardNumber, expMonth, expYear, cvv);
+                
+                Customer newCustomer = new Customer(customerName, customerID);
+                newCustomer.creditCard = newCard;
+
+                customerBLL.Create(newCustomer);
+                MessageBox.Show("A new customer has been added");
+
+                // Hide the group box again after creation
+                CreateGrpBx.Visible = false;
+                CreditCardGrpBx.Visible = false;
+
+                // Clear the textboxes
+                CustomerNameTxtBx.Clear();
+                CustomerIDTxtBx.Clear();
+
+                foreach (Control c in CreditCardGrpBx.Controls)
+                {
+                    if (c is TextBox tb)
+                    {
+                        tb.Clear();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
+
+        #region ReadAll
+        public override void BaseReadAllBtn()
+        {
+            try
+            {
+                customerBLL.ReadAll();
+                MessageBox.Show(string.Join("\n", customerBLL.ReadAll()));
+            }
+            catch
+            {
+                MessageBox.Show("Unable to read products");
+            }
+        }
+
+        private void ReadAllEnter()
+        {
+            try
+            {
+                // parsing textboxes in group box
+                string customerName = CustomerNameTxtBx.Text;
+                int customerID = int.Parse(CustomerIDTxtBx.Text);
+
+                // creating a new tmp updateProduct 
+
+                Customer updateCustomer = new Customer(customerName, customerID);
+
+                // call the update method
+                customerBLL.Update(updateCustomer);
+                MessageBox.Show("Your customer has been updated");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
+        #endregion
+
+        #region Read
+        public override void BaseReadBtn()
+        {
+            // show Groupbox
+            CreateGrpBx.Visible = true;
+            CreditCardGrpBx.Visible = false;
+            CustomerNameTxtBx.Visible = false;
+            CustomerNameLbl.Visible = false;
+            CreateGrpBx.Text = "Search customer by ID";
+            // clear textbox from what was there before, when click search customer button
+            CustomerIDTxtBx.Clear();
+
+            enter = ReadOneEnter;
+        }
+        private void ReadOneEnter()
+        {
+            try
+            {
+                // searching for customer ID
+                int customerID = int.Parse(CustomerIDTxtBx.Text);
+                Customer c = customerBLL.Read(customerID);
 
 
-        //private void CreateEnter()
-        //{
-        //    try
-        //    {
-        //        // enter button from create
-        //        string productName = ProductNameTxtBx.Text;
-        //        int productID = int.Parse(ProductIDTxtBx.Text);
-        //        decimal costPerUnit = decimal.Parse(CostPerUnitTxtBx.Text);
-        //        int amountInStock = int.Parse(AmountInStockTxtBx.Text);
-        //        Product newProduct = new Product(productID, productName, costPerUnit, amountInStock);
-        //        productBLL.Create(newProduct);
-        //        MessageBox.Show("A new product has been added");
+                
+                // show all controls
+                foreach (Control control in CreateGrpBx.Controls)
+                {
+                    control.Visible = true;
+                }
 
-        //        // Hide the group box again after creation
-        //        CreateGrpBx.Visible = false;
+                if (c != null)
+                {
+                    // Auto-fill the other textboxes
 
-        //        // Clear the textboxes
-        //        ProductNameTxtBx.Clear();
-        //        ProductIDTxtBx.Clear();
-        //        CostPerUnitTxtBx.Clear();
-        //        AmountInStockTxtBx.Clear();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
+                    // if the customer has a credit card, fill in the credit card details
+                    if (c.creditCard != null)
+                    {
+                        CreditCard searchCard = c.creditCard;
+                        CardHolderNameTxtBx.Text = searchCard.CardHolderName;
+                        ExpMonthTxtBx.Text = searchCard.ExpMonth;
+                        ExpYearTxtBx.Text = searchCard.ExpYear;
+                        CVVTxtBx.Text = searchCard.CVV;
+                    }
+                    CustomerNameTxtBx.Text = c.CustomerName;
 
-        //private void ReadOneEnter()
-        //{
-        //    try
-        //    {
-        //        // searching for product ID
-        //        int productID = int.Parse(ProductIDTxtBx.Text);
-        //        Product p = productBLL.Read(productID);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Product not found");
 
-        //        // show all controls
-        //        foreach (Control c in CreateGrpBx.Controls)
-        //        {
-        //            c.Visible = true;
-        //        }
+                    // Optionally clear the other textboxes
+                    foreach (Control control in CreateGrpBx.Controls)
+                    {
+                        if (control is TextBox textBox)
+                        {
+                            textBox.Clear();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
 
-        //        if (p != null)
-        //        {
-        //            // Auto-fill the other textboxes
-        //            ProductNameTxtBx.Text = p.ProductName;
-        //            CostPerUnitTxtBx.Text = p.CostPerUnit.ToString();
-        //            AmountInStockTxtBx.Text = p.AmountInStock.ToString();
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Product not found");
+        #region Delete
+        public override void BaseDeleteBtn()
+        {
+            enter = DeleteEnter;
+            CreateGrpBx.Visible = true;
+            CreditCardGrpBx.Visible = false;
+            CustomerNameLbl.Visible = false;
+            CustomerNameTxtBx.Visible = false;
+            CreateGrpBx.Text = "Delete a customer";
+        }
+        private void DeleteEnter()
+        {
+            try
+            {
+                // parsing textboxes in group box
+                string customerName = CustomerNameTxtBx.Text;
+                int customerID = int.Parse(CustomerIDTxtBx.Text);
 
-        //            // Optionally clear the other textboxes
-        //            ProductNameTxtBx.Clear();
-        //            CostPerUnitTxtBx.Clear();
-        //            AmountInStockTxtBx.Clear();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
+                // creating a new tmp deleteProduct 
+                Customer deleteCustomer = new Customer(customerName, customerID);
 
-        //private void ReadAllEnter()
-        //{
-        //    try
-        //    {
-        //        // parsing textboxes in group box
-        //        string productName = ProductNameTxtBx.Text;
-        //        int productID = int.Parse(ProductIDTxtBx.Text);
-        //        decimal costPerUnit = decimal.Parse(CostPerUnitTxtBx.Text);
-        //        int amountInStock = int.Parse(AmountInStockTxtBx.Text);
+                // call the delete method
+                customerBLL.Delete(deleteCustomer);
 
-        //        // creating a new tmp updateProduct 
+                // Hide the group box again after creation
+                CreateGrpBx.Visible = false;
 
-        //        Product updateProduct = new Product(productID, productName, costPerUnit, amountInStock);
+                // Clear the textboxes
+                foreach (Control control in CreateGrpBx.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        textBox.Clear();
+                    }
+                }
 
-        //        // call the update method
-        //        productBLL.Update(updateProduct);
-        //        MessageBox.Show("Your product has been updated");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
+                MessageBox.Show("Your customer has been deleted");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
 
-        //    }
-        //}
-        //private void DeleteEnter()
-        //{
-        //    try
-        //    {
-        //        // parsing textboxes in group box
-        //        string productName = ProductNameTxtBx.Text;
-        //        int productID = int.Parse(ProductIDTxtBx.Text);
-        //        decimal costPerUnit = decimal.Parse(CostPerUnitTxtBx.Text);
-        //        int amountInStock = int.Parse(AmountInStockTxtBx.Text);
+            }
+        }
+        #endregion
 
-        //        // creating a new tmp deleteProduct 
+        #region Update
+        public override void BaseUpdateBtn()
+        {
+            enter = UpdateEnter;
+            CreateGrpBx.Visible = true;
+            CreateGrpBx.Text = "Update a customer";
+        }
+        private void UpdateEnter()
+        {
+            try
+            {
+                // parsing textboxes in group box
+                string customerName = CustomerNameTxtBx.Text;
+                int customerID = int.Parse(CustomerIDTxtBx.Text);
+                string cardNumber = CardNumberTxtBx.Text;
+                string cardHolder = CardHolderNameTxtBx.Text;
+                string cvv = CVVTxtBx.Text;
+                string expMonth = ExpMonthTxtBx.Text;
+                string expYear = ExpYearTxtBx.Text;
 
-        //        Product deleteProduct = new Product(productID, productName, costPerUnit, amountInStock);
+                // creating a new tmp updateProduct 
+                Customer updateCustomer = new Customer(customerName, customerID);
+                CreditCard updateCreditCard = new CreditCard(cardHolder, cardNumber, expMonth, expYear, cvv);
+                updateCustomer.creditCard = updateCreditCard;
 
-        //        // call the delete method
-        //        productBLL.Delete(deleteProduct);
+                // call the update method
+                customerBLL.Update(updateCustomer);
+                MessageBox.Show("Your customer has been updated");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
 
-        //        // Hide the group box again after creation
-        //        CreateGrpBx.Visible = false;
+            }
+        }
+        #endregion
 
-        //        // Clear the textboxes
-        //        ProductNameTxtBx.Clear();
-        //        ProductIDTxtBx.Clear();
-        //        CostPerUnitTxtBx.Clear();
-        //        AmountInStockTxtBx.Clear();
+        #region Close
+        public override void BaseCloseBtn()
+        {
+            // Hide the group box
+            CreateGrpBx.Visible = false;
 
-        //        MessageBox.Show("Your product has been deleted");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-
-        //    }
-        //}
+            // Optional: Clear the input fields
+            foreach (Control control in CreateGrpBx.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Clear();
+                }
+            }
+        }
+        #endregion
 
     }
 }

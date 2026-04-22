@@ -7,7 +7,7 @@ namespace Entities
     // A class to create objects for each Customer. Inherets from Person.
     public class Customer : Person
     {
-        CreditCard creditCard;
+        public CreditCard creditCard;
         public string CustomerName { get; set; }  // ✔ property
         public int CustomerID { get; set; }  // ✔ property
 
