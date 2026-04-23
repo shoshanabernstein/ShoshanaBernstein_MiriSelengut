@@ -9,7 +9,7 @@ namespace DAL
     public class DuplicateProductNumber : Exception
     {
         public DuplicateProductNumber() 
-            : base("That product number already exists")
+            : base("That Product ID already exists")
         {  }
 
         public DuplicateProductNumber(string message)

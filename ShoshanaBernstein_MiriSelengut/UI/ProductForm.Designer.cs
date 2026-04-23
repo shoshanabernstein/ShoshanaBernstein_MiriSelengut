@@ -129,6 +129,7 @@
             this.Controls.Add(this.CreateGrpBx);
             this.Name = "ProductForm";
             this.Text = "ProductForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductForm_FormClosing);
             this.Controls.SetChildIndex(this.CreateGrpBx, 0);
             this.CreateGrpBx.ResumeLayout(false);
             this.CreateGrpBx.PerformLayout();

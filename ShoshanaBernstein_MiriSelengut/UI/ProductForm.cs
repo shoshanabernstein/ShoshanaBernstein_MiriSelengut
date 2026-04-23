@@ -259,7 +259,17 @@ namespace UI
             ProductIDTxtBx.Clear();
             CostPerUnitTxtBx.Clear();
             AmountInStockTxtBx.Clear();
+
+            // close this menu, and open back up main menu
+            this.Hide();
+            MainMenu main = new MainMenu();
+            main.Show();
         }
         #endregion
+
+        private void ProductForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

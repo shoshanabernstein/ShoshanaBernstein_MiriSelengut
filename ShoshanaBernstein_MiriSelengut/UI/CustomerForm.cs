@@ -246,6 +246,7 @@ namespace UI
             enter = UpdateEnter;
             CreateGrpBx.Visible = true;
             CreateGrpBx.Text = "Update a customer";
+            CreditCardGrpBx.Visible = true;
         }
         private void UpdateEnter()
         {
@@ -291,8 +292,20 @@ namespace UI
                     textBox.Clear();
                 }
             }
+            this.Hide();
+            MainMenu main = new MainMenu();
+            main.Show();
         }
         #endregion
 
+        private void CustomerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void CardNumberTxtBx_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

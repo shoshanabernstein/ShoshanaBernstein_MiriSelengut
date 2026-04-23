@@ -53,7 +53,7 @@ namespace DAL
             try
             {
                 //Check if a customer with the same customerID already exists
-                bool exists = list.Any(p => p.CustomerName == tmp.CustomerName);
+                bool exists = list.Any(p => p.CustomerID == tmp.CustomerID);
                 //if it doesn't exit
                 if (exists)
                 {

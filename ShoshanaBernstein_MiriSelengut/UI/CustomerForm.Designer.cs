@@ -104,9 +104,9 @@
             this.CreditCardGrpBx.Controls.Add(this.ExpLbl);
             this.CreditCardGrpBx.Controls.Add(this.ExpMonthTxtBx);
             this.CreditCardGrpBx.Controls.Add(this.CardNumberTxtBx);
-            this.CreditCardGrpBx.Location = new System.Drawing.Point(9, 71);
+            this.CreditCardGrpBx.Location = new System.Drawing.Point(9, 68);
             this.CreditCardGrpBx.Name = "CreditCardGrpBx";
-            this.CreditCardGrpBx.Size = new System.Drawing.Size(413, 135);
+            this.CreditCardGrpBx.Size = new System.Drawing.Size(413, 138);
             this.CreditCardGrpBx.TabIndex = 13;
             this.CreditCardGrpBx.TabStop = false;
             this.CreditCardGrpBx.Text = "Credit Card";
@@ -114,7 +114,7 @@
             // CardNumberLbl
             // 
             this.CardNumberLbl.AutoSize = true;
-            this.CardNumberLbl.Location = new System.Drawing.Point(-2, 22);
+            this.CardNumberLbl.Location = new System.Drawing.Point(6, 22);
             this.CardNumberLbl.Name = "CardNumberLbl";
             this.CardNumberLbl.Size = new System.Drawing.Size(87, 16);
             this.CardNumberLbl.TabIndex = 21;
@@ -146,7 +146,7 @@
             // CardHolderNameLbl
             // 
             this.CardHolderNameLbl.AutoSize = true;
-            this.CardHolderNameLbl.Location = new System.Drawing.Point(-2, 69);
+            this.CardHolderNameLbl.Location = new System.Drawing.Point(6, 69);
             this.CardHolderNameLbl.Name = "CardHolderNameLbl";
             this.CardHolderNameLbl.Size = new System.Drawing.Size(123, 16);
             this.CardHolderNameLbl.TabIndex = 17;
@@ -154,9 +154,9 @@
             // 
             // CardHolderNameTxtBx
             // 
-            this.CardHolderNameTxtBx.Location = new System.Drawing.Point(-6, 88);
+            this.CardHolderNameTxtBx.Location = new System.Drawing.Point(6, 88);
             this.CardHolderNameTxtBx.Name = "CardHolderNameTxtBx";
-            this.CardHolderNameTxtBx.Size = new System.Drawing.Size(291, 22);
+            this.CardHolderNameTxtBx.Size = new System.Drawing.Size(286, 22);
             this.CardHolderNameTxtBx.TabIndex = 16;
             // 
             // ExpLbl
@@ -177,10 +177,11 @@
             // 
             // CardNumberTxtBx
             // 
-            this.CardNumberTxtBx.Location = new System.Drawing.Point(-1, 41);
+            this.CardNumberTxtBx.Location = new System.Drawing.Point(6, 41);
             this.CardNumberTxtBx.Name = "CardNumberTxtBx";
             this.CardNumberTxtBx.Size = new System.Drawing.Size(286, 22);
             this.CardNumberTxtBx.TabIndex = 13;
+            this.CardNumberTxtBx.TextChanged += new System.EventHandler(this.CardNumberTxtBx_TextChanged);
             // 
             // CustomerForm
             // 
@@ -190,6 +191,7 @@
             this.Controls.Add(this.CreateGrpBx);
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomerForm_FormClosing);
             this.Controls.SetChildIndex(this.CreateGrpBx, 0);
             this.CreateGrpBx.ResumeLayout(false);
             this.CreateGrpBx.PerformLayout();
