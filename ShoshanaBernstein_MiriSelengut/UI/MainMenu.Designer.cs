@@ -33,11 +33,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.OrderFormBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CustomerFormBtn
             // 
-            this.CustomerFormBtn.Location = new System.Drawing.Point(200, 244);
+            this.CustomerFormBtn.Location = new System.Drawing.Point(114, 244);
             this.CustomerFormBtn.Name = "CustomerFormBtn";
             this.CustomerFormBtn.Size = new System.Drawing.Size(168, 58);
             this.CustomerFormBtn.TabIndex = 2;
@@ -47,7 +48,7 @@
             // 
             // ProductFormBtn
             // 
-            this.ProductFormBtn.Location = new System.Drawing.Point(390, 244);
+            this.ProductFormBtn.Location = new System.Drawing.Point(303, 244);
             this.ProductFormBtn.Name = "ProductFormBtn";
             this.ProductFormBtn.Size = new System.Drawing.Size(168, 58);
             this.ProductFormBtn.TabIndex = 3;
@@ -82,11 +83,21 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "A Project of Thomas + Dorothy";
             // 
+            // OrderFormBtn
+            // 
+            this.OrderFormBtn.Location = new System.Drawing.Point(493, 244);
+            this.OrderFormBtn.Name = "OrderFormBtn";
+            this.OrderFormBtn.Size = new System.Drawing.Size(168, 58);
+            this.OrderFormBtn.TabIndex = 7;
+            this.OrderFormBtn.Text = "Orders";
+            this.OrderFormBtn.UseVisualStyleBackColor = true;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.OrderFormBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
@@ -107,5 +118,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button OrderFormBtn;
     }
 }
