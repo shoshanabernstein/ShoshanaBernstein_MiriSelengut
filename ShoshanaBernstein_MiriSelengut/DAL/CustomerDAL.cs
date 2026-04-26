@@ -52,6 +52,7 @@ namespace DAL
         {
             try
             {
+                
                 //Check if a customer with the same customerID already exists
                 bool exists = list.Any(p => p.CustomerID == tmp.CustomerID);
                 //if it doesn't exit
@@ -61,10 +62,12 @@ namespace DAL
                 }
                 else
                 {
+                    CreditCard newCard = tmp.creditCard;
                     Customer newCustomer = new Customer(
                         tmp.CustomerName,
                         tmp.CustomerID
                         );
+                    newCustomer.creditCard = newCard;
                     //add it to the list
                     list.Add(newCustomer);
                 }
@@ -91,7 +94,9 @@ namespace DAL
                     if (list[i].CustomerID == customerID)
                     {
                         // Return a copy of the customer
-                        return new Customer(list[i].CustomerName, list[i].CustomerID);
+                        Customer readCustomer = new Customer(list[i].CustomerName, list[i].CustomerID);
+                        readCustomer.creditCard = list[i].creditCard;
+                        return readCustomer;
                     }
                 }
 
@@ -133,7 +138,13 @@ namespace DAL
                 {
                     if (list[i].CustomerID == tmp.CustomerID)
                     {
-                        list[i] = new Customer(tmp.CustomerName, tmp.CustomerID);
+                        CreditCard newCard = tmp.creditCard;
+                        Customer newCustomer = new Customer(
+                            tmp.CustomerName,
+                            tmp.CustomerID
+                            );
+                        newCustomer.creditCard = newCard;
+                        list[i] = newCustomer;
                         return;
                     }
                 }

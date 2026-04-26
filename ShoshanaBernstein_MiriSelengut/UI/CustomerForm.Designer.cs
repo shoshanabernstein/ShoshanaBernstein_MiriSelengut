@@ -64,7 +64,7 @@
             // CustomerIDLbl
             // 
             this.CustomerIDLbl.AutoSize = true;
-            this.CustomerIDLbl.Location = new System.Drawing.Point(255, 34);
+            this.CustomerIDLbl.Location = new System.Drawing.Point(253, 34);
             this.CustomerIDLbl.Name = "CustomerIDLbl";
             this.CustomerIDLbl.Size = new System.Drawing.Size(83, 16);
             this.CustomerIDLbl.TabIndex = 3;

@@ -16,7 +16,6 @@ namespace UI
 {
     public partial class CustomerForm : BaseForm
     {
-        CustomerDAL customerDAL;
         CustomerBLL customerBLL;
 
         public CustomerForm()
@@ -24,7 +23,6 @@ namespace UI
             InitializeComponent();
             CreateGrpBx.Visible = false;
             CreditCardGrpBx.Visible = false;
-            customerDAL = CustomerDAL.Instance;
             customerBLL = new CustomerBLL();
         }
 
@@ -35,12 +33,51 @@ namespace UI
         {
             enter();
         }
+        #region methods
+        public void Clear()
+        {
+            // Clear the textboxes
+            CustomerNameTxtBx.Clear();
+            CustomerIDTxtBx.Clear();
 
+            foreach (Control c in CreditCardGrpBx.Controls)
+            {
+                if (c is TextBox tb)
+                {
+                    tb.Clear();
+                }
+            }
+        }
+
+        public void OnlyIDVisible()
+        {
+            CreateGrpBx.Visible = true;
+            CreditCardGrpBx.Visible = false;
+            foreach (Control c in CreateGrpBx.Controls)
+            {
+                c.Visible = false;
+                if (c == CustomerIDLbl || c == CustomerIDTxtBx)
+                {
+                    c.Visible = true;
+                }
+            }
+
+        }
+        public void Visible()
+        {
+            CreateGrpBx.Visible = true;
+            foreach (Control c in CreateGrpBx.Controls)
+            {
+                c.Visible = true;
+            }
+            CreditCardGrpBx.Visible = true;
+        }
+        #endregion
         #region Create
         public override void BaseCreateBtn()
         {
-            CreateGrpBx.Visible = true;
-            CreditCardGrpBx.Visible = true;
+            Clear();
+            Visible();
             CreateGrpBx.Text = "Add a new customer";
             enter = CreateEnter;
         }
@@ -58,7 +95,7 @@ namespace UI
                 string expYear = ExpYearTxtBx.Text;
 
                 CreditCard newCard = new CreditCard(cardHolder, cardNumber, expMonth, expYear, cvv);
-                
+
                 Customer newCustomer = new Customer(customerName, customerID);
                 newCustomer.creditCard = newCard;
 
@@ -68,18 +105,6 @@ namespace UI
                 // Hide the group box again after creation
                 CreateGrpBx.Visible = false;
                 CreditCardGrpBx.Visible = false;
-
-                // Clear the textboxes
-                CustomerNameTxtBx.Clear();
-                CustomerIDTxtBx.Clear();
-
-                foreach (Control c in CreditCardGrpBx.Controls)
-                {
-                    if (c is TextBox tb)
-                    {
-                        tb.Clear();
-                    }
-                }
             }
             catch (Exception ex)
             {
@@ -129,14 +154,10 @@ namespace UI
         #region Read
         public override void BaseReadBtn()
         {
-            // show Groupbox
-            CreateGrpBx.Visible = true;
-            CreditCardGrpBx.Visible = false;
-            CustomerNameTxtBx.Visible = false;
-            CustomerNameLbl.Visible = false;
+            Clear();
+            OnlyIDVisible();
+
             CreateGrpBx.Text = "Search customer by ID";
-            // clear textbox from what was there before, when click search customer button
-            CustomerIDTxtBx.Clear();
 
             enter = ReadOneEnter;
         }
@@ -144,47 +165,34 @@ namespace UI
         {
             try
             {
-                // searching for customer ID
+                // Searching for customer ID
                 int customerID = int.Parse(CustomerIDTxtBx.Text);
+
                 Customer c = customerBLL.Read(customerID);
+                CreditCard newcard = c.creditCard;
 
-
-                
-                // show all controls
-                foreach (Control control in CreateGrpBx.Controls)
-                {
-                    control.Visible = true;
-                }
+                // after enter, show all textboxes
+                Visible();
 
                 if (c != null)
                 {
                     // Auto-fill the other textboxes
-
                     // if the customer has a credit card, fill in the credit card details
                     if (c.creditCard != null)
                     {
                         CreditCard searchCard = c.creditCard;
                         CardHolderNameTxtBx.Text = searchCard.CardHolderName;
+                        CardNumberTxtBx.Text = searchCard.CardNumber;
                         ExpMonthTxtBx.Text = searchCard.ExpMonth;
                         ExpYearTxtBx.Text = searchCard.ExpYear;
                         CVVTxtBx.Text = searchCard.CVV;
                     }
                     CustomerNameTxtBx.Text = c.CustomerName;
-
-                    
                 }
                 else
                 {
                     MessageBox.Show("Product not found");
-
-                    // Optionally clear the other textboxes
-                    foreach (Control control in CreateGrpBx.Controls)
-                    {
-                        if (control is TextBox textBox)
-                        {
-                            textBox.Clear();
-                        }
-                    }
+                    Clear();
                 }
             }
             catch (Exception ex)
@@ -197,12 +205,12 @@ namespace UI
         #region Delete
         public override void BaseDeleteBtn()
         {
-            enter = DeleteEnter;
-            CreateGrpBx.Visible = true;
-            CreditCardGrpBx.Visible = false;
-            CustomerNameLbl.Visible = false;
-            CustomerNameTxtBx.Visible = false;
+            Clear();
+            OnlyIDVisible();
+
             CreateGrpBx.Text = "Delete a customer";
+
+            enter = DeleteEnter;
         }
         private void DeleteEnter()
         {
@@ -221,15 +229,6 @@ namespace UI
                 // Hide the group box again after creation
                 CreateGrpBx.Visible = false;
 
-                // Clear the textboxes
-                foreach (Control control in CreateGrpBx.Controls)
-                {
-                    if (control is TextBox textBox)
-                    {
-                        textBox.Clear();
-                    }
-                }
-
                 MessageBox.Show("Your customer has been deleted");
             }
             catch (Exception ex)
@@ -243,28 +242,61 @@ namespace UI
         #region Update
         public override void BaseUpdateBtn()
         {
-            enter = UpdateEnter;
-            CreateGrpBx.Visible = true;
+            Clear();
+            Visible();
+
             CreateGrpBx.Text = "Update a customer";
-            CreditCardGrpBx.Visible = true;
+
+            enter = UpdateEnter;
         }
         private void UpdateEnter()
         {
             try
             {
-                // parsing textboxes in group box
-                string customerName = CustomerNameTxtBx.Text;
+                // creating customer
                 int customerID = int.Parse(CustomerIDTxtBx.Text);
+                Customer searchCustomer = customerBLL.Read(customerID);
+                string customerName = CustomerNameTxtBx.Text;
+
+                // creating a new tmp updateProduct 
+                Customer updateCustomer = new Customer(customerName, customerID);
+
+                //creating credit card
                 string cardNumber = CardNumberTxtBx.Text;
                 string cardHolder = CardHolderNameTxtBx.Text;
                 string cvv = CVVTxtBx.Text;
                 string expMonth = ExpMonthTxtBx.Text;
                 string expYear = ExpYearTxtBx.Text;
 
-                // creating a new tmp updateProduct 
-                Customer updateCustomer = new Customer(customerName, customerID);
-                CreditCard updateCreditCard = new CreditCard(cardHolder, cardNumber, expMonth, expYear, cvv);
-                updateCustomer.creditCard = updateCreditCard;
+                // parsing credit card in group box, if contains something
+                if (string.IsNullOrWhiteSpace(customerName))
+                {
+                    customerName = searchCustomer.CustomerName;
+                }
+                if (string.IsNullOrWhiteSpace(cardNumber))
+                {
+                    cardNumber = searchCustomer.creditCard.CardNumber;
+                }
+                if (string.IsNullOrWhiteSpace(cardHolder))
+                {
+                    cardHolder = searchCustomer.creditCard.CardHolderName;
+                }
+                if (string.IsNullOrWhiteSpace(cvv))
+                {
+                    cvv = searchCustomer.creditCard.CVV;
+                }
+                if (string.IsNullOrWhiteSpace(expMonth))
+                {
+                    expMonth = searchCustomer.creditCard.ExpMonth;
+                }
+                if (string.IsNullOrWhiteSpace(expYear))
+                {
+                    expYear = searchCustomer.creditCard.ExpYear;
+                }
+                CreditCard updateCard = new CreditCard(cardHolder, cardNumber, expMonth, expYear, cvv);
+
+                // putting credit card into customer
+                updateCustomer.creditCard = updateCard;
 
                 // call the update method
                 customerBLL.Update(updateCustomer);
@@ -273,7 +305,6 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
         }
         #endregion

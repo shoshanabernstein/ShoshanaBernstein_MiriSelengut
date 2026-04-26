@@ -17,7 +17,7 @@ namespace UI
     {
         ProductDAL productDAL;
         ProductBLL productBLL;
- 
+
         public ProductForm()
         {
             InitializeComponent();
@@ -40,6 +40,14 @@ namespace UI
         {
             CreateGrpBx.Visible = true;
             CreateGrpBx.Text = "Add a new product";
+            foreach (Control c in CreateGrpBx.Controls)
+            {
+                c.Visible = true;
+                if (c is TextBox tb)
+                {
+                    tb.Clear();
+                }
+            }
             enter = CreateEnter;
         }
         private void CreateEnter()
@@ -117,6 +125,7 @@ namespace UI
             // show Groupbox
             CreateGrpBx.Visible = true;
             CreateGrpBx.Text = "Search product";
+
             // clear textbox from what was there before, when click SearchProduct button
             ProductIDTxtBx.Clear();
 
@@ -178,20 +187,29 @@ namespace UI
             enter = DeleteEnter;
             CreateGrpBx.Visible = true;
             CreateGrpBx.Text = "Delete a product";
+            foreach (Control c in CreateGrpBx.Controls)
+            {
+                if (c is TextBox tb)
+                    tb.Clear();
+
+                bool show =
+                    c is TextBox tbx && tbx.Name == "ProductIDTxtBx"
+                    || c is Label lbl && lbl.Name == "ProductIDLbl";
+
+                c.Visible = show;
+            }
         }
+        
         private void DeleteEnter()
         {
             try
             {
-                // parsing textboxes in group box
-                string productName = ProductNameTxtBx.Text;
+               // finding product with ID given 
                 int productID = int.Parse(ProductIDTxtBx.Text);
-                decimal costPerUnit = decimal.Parse(CostPerUnitTxtBx.Text);
-                int amountInStock = int.Parse(AmountInStockTxtBx.Text);
+               
+                Product searchProduct = productBLL.Read(productID);
 
-                // creating a new tmp deleteProduct 
-
-                Product deleteProduct = new Product(productID, productName, costPerUnit, amountInStock);
+                Product deleteProduct = new Product(searchProduct.ProductNumber, searchProduct.ProductName, searchProduct.CostPerUnit, searchProduct.AmountInStock);
 
                 // call the delete method
                 productBLL.Delete(deleteProduct);
@@ -221,19 +239,48 @@ namespace UI
             enter = UpdateEnter;
             CreateGrpBx.Visible = true;
             CreateGrpBx.Text = "Update a product";
+            // show all controls
+            foreach (Control c in CreateGrpBx.Controls)
+            {
+                if (c is TextBox tb)
+                {
+                    tb.Clear();
+                }
+                c.Visible = true;
+            }
         }
         private void UpdateEnter()
         {
             try
             {
-                // parsing textboxes in group box
-                string productName = ProductNameTxtBx.Text;
                 int productID = int.Parse(ProductIDTxtBx.Text);
-                decimal costPerUnit = decimal.Parse(CostPerUnitTxtBx.Text);
-                int amountInStock = int.Parse(AmountInStockTxtBx.Text);
+                Product searchProduct = productBLL.Read(productID);
+
+                string productName = ProductNameTxtBx.Text;
+
+                // keep same variable declarations
+                decimal costPerUnit;
+                int amountInStock;
+
+                // safe parsing
+                decimal.TryParse(CostPerUnitTxtBx.Text, out costPerUnit);
+                int.TryParse(AmountInStockTxtBx.Text, out amountInStock);
+
+                // parsing textboxes in group box, if contains something
+                if (string.IsNullOrWhiteSpace(productName))
+                {
+                    productName = searchProduct.ProductName;
+                }
+                if (costPerUnit == 0)
+                {
+                    costPerUnit = searchProduct.CostPerUnit;
+                }
+                if (amountInStock == 0)
+                {
+                    amountInStock = searchProduct.AmountInStock;
+                }                
 
                 // creating a new tmp updateProduct 
-
                 Product updateProduct = new Product(productID, productName, costPerUnit, amountInStock);
 
                 // call the update method
