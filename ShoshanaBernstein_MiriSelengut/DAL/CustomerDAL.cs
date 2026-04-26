@@ -12,7 +12,7 @@ namespace DAL
 {
     public class CustomerDAL
     {
-        static List<Customer> list = new List<Customer>();
+        public static List<Customer> list = new List<Customer>();
         static readonly CustomerDAL instance = new CustomerDAL();
         public static CustomerDAL Instance { get { return instance; } }
         
@@ -72,7 +72,7 @@ namespace DAL
                     list.Add(newCustomer);
                 }
             }
-            catch (DuplicateProductNumber ex)
+            catch (DuplicateProductID ex)
             {
                 Console.WriteLine("\nCaught in Create in CustomerDAL");
                 Console.WriteLine(ex.Message);

@@ -12,7 +12,7 @@ namespace DAL
 {
     public class ProductDAL
     {
-        static List<Product> list = new List<Product>();
+        static public List<Product> list = new List<Product>();
         static bool IsRead = false;
 
         #region Ctor
@@ -63,7 +63,7 @@ namespace DAL
                 //if it doesn't exit
                 if (exists)
                 {
-                    throw new DuplicateProductNumber();
+                    throw new DuplicateProductID();
                 }
                 else
                 {
@@ -77,7 +77,7 @@ namespace DAL
                     list.Add(newProduct);
                 }
             }
-            catch (DuplicateProductNumber ex)
+            catch (DuplicateProductID ex)
             {
                 Console.WriteLine("\nCaught in Create in ProductDAL");
                 Console.WriteLine(ex.Message);
@@ -108,9 +108,9 @@ namespace DAL
                         return foundProduct;
                     }
                 }
-                throw new ProductNumberNotFound();
+                throw new ProductIDNotFound();
             }
-            catch (ProductNumberNotFound ex)
+            catch (ProductIDNotFound ex)
             {
                 Console.WriteLine("\nCaught in Read one in ProductDAL");
                 Console.WriteLine(ex.Message);
@@ -166,9 +166,9 @@ namespace DAL
                         return;
                     }
                 }
-                throw new ProductNumberNotFound();
+                throw new ProductIDNotFound();
             }
-            catch (ProductNumberNotFound ex)
+            catch (ProductIDNotFound ex)
             {
                 Console.WriteLine("\nCaught in Update in ProductDAL");
                 Console.WriteLine(ex.Message);
@@ -195,9 +195,9 @@ namespace DAL
                         return;
                     }
                 }
-                throw new ProductNumberNotFound();
+                throw new ProductIDNotFound();
             }
-            catch (ProductNumberNotFound ex)
+            catch (ProductIDNotFound ex)
             {
                 Console.WriteLine("\nCaught in Delete in ProductDAL");
                 Console.WriteLine(ex.Message);

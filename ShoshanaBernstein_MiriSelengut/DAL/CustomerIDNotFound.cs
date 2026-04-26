@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class CustomerIDNotFound : Exception
+    public class CustomerIDNotFound : Exception
     {
         public CustomerIDNotFound()
     : base("That customer ID isn't found")

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class ProductNumberNotFound : Exception
+    public class ProductIDNotFound : Exception
     {
-        public ProductNumberNotFound()
+        public ProductIDNotFound()
     : base("That product number isn't found")
         { }
 
-        public ProductNumberNotFound(string message)
+        public ProductIDNotFound(string message)
         { }
 
-        public ProductNumberNotFound(string message, Exception inner)
+        public ProductIDNotFound(string message, Exception inner)
             : base(message, inner)
         { }
     }

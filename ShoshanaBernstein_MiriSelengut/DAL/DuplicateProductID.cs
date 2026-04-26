@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DuplicateProductNumber : Exception
+    public class DuplicateProductID : Exception
     {
-        public DuplicateProductNumber() 
+        public DuplicateProductID() 
             : base("That Product ID already exists")
         {  }
 
-        public DuplicateProductNumber(string message)
+        public DuplicateProductID(string message)
         {  }
 
-        public DuplicateProductNumber(string message, Exception inner) 
+        public DuplicateProductID(string message, Exception inner) 
             : base(message, inner) 
         {  }
 

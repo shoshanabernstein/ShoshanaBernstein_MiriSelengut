@@ -12,47 +12,87 @@ namespace DAL
         static void Main(string[] args)
         {
 
-            ProductDAL products = new ProductDAL();
-            Product piano = new Product(4, "piano", 789.78m, 34);
+            OrderDAL orderDAL = OrderDAL.Instance;
+            ProductDAL productDAL = new ProductDAL();
+            Order order = new Order(1, 1, 2);
 
-            // Add object piano to products
-            products.Create(piano);
+            Console.WriteLine("\nQuantity before adding");
+            Console.WriteLine(productDAL.Read(order.ProductID).AmountInStock);
 
-            // Print out name of products in list
-            products.Print(products);
+            Console.WriteLine("\nCreating order");
+            orderDAL.Create(order);
 
-            // Create new paino object
-            Product updatedPiano = new Product(4, "upright paino", 789.78m, 34);
+            Console.WriteLine("\nQuantity after adding");
+            Console.WriteLine(productDAL.Read(order.ProductID).AmountInStock);
 
-            // Update piano
-            products.Update(updatedPiano);
+            orderDAL.Print();
 
-            // Print out name of products in list
-            products.Print(products);
+            Console.WriteLine("\nRead");
+            Console.WriteLine(orderDAL.Read(1));
 
-            // Print out found product
-            Console.WriteLine("\nProduct that was found:");
-            Console.WriteLine(products.Read(2));
+            Console.WriteLine("\nRead by product");
+            Console.WriteLine(orderDAL.ReadProduct(1));
 
-            // Delete piano from products
-            products.Delete(piano);
+            Console.WriteLine("\nRead by customer");
+            Console.WriteLine(orderDAL.ReadCustomer(1));
 
-            // Print out name of products in list 
-            products.Print(products);
+            Console.WriteLine("\nRead All");
+            Console.WriteLine(string.Join("\n", orderDAL.ReadAll()));
 
-            // Different way to print out list
-            Console.WriteLine("\nNew way to print list.");
-            Console.WriteLine(string.Join("\n", products.ReadAll()));
+            Console.WriteLine("Update");
+            int orderId = order.OrderID;
 
-            // Testing exeptions
-            Console.WriteLine("\nTesting exceptions:");
+            Order updateOrder = new Order(1, 1, 1);
+            orderDAL.Update(updateOrder);
 
-            Product bookcase = new Product(4, "Sefarim Shrank", 789.78m, 34);
-            Product duplicateBookcase = new Product(4, "Second Sefarim Shrank", 789.78m, 34);
-            Product nullBookcase = new Product(5, "Non-Existent bookcase", 889.99m, 20);
+            Console.WriteLine("\nQuantity after updating");
+            Console.WriteLine(productDAL.Read(order.ProductID).AmountInStock);
 
-            products.Create(bookcase);
-            products.Read(8);
+
+            #region testing
+            //ProductDAL products = new ProductDAL();
+            //Product piano = new Product(4, "piano", 789.78m, 34);
+
+            //// Add object piano to products
+            //products.Create(piano);
+
+            //// Print out name of products in list
+            //products.Print(products);
+
+            //// Create new paino object
+            //Product updatedPiano = new Product(4, "upright paino", 789.78m, 34);
+
+            //// Update piano
+            //products.Update(updatedPiano);
+
+            //// Print out name of products in list
+            //products.Print(products);
+
+            //// Print out found product
+            //Console.WriteLine("\nProduct that was found:");
+            //Console.WriteLine(products.Read(2));
+
+            //// Delete piano from products
+            //products.Delete(piano);
+
+            //// Print out name of products in list 
+            //products.Print(products);
+
+            //// Different way to print out list
+            //Console.WriteLine("\nNew way to print list.");
+            //Console.WriteLine(string.Join("\n", products.ReadAll()));
+
+            //// Testing exeptions
+            //Console.WriteLine("\nTesting exceptions:");
+
+            //Product bookcase = new Product(4, "Sefarim Shrank", 789.78m, 34);
+            //Product duplicateBookcase = new Product(4, "Second Sefarim Shrank", 789.78m, 34);
+            //Product nullBookcase = new Product(5, "Non-Existent bookcase", 889.99m, 20);
+
+            //products.Create(bookcase);
+            //products.Read(8);
+
+
 
             // Try to add a product with a duplicate product number
             //try
@@ -81,7 +121,7 @@ namespace DAL
             //// Try to update a product with a product number that doesn't exist
             //try
             //{
-                
+
             //}
             //catch (ProductNumberNotFound e)
             //{
@@ -99,6 +139,8 @@ namespace DAL
             //    Console.WriteLine("*Error because tried to delete non-existent bookcase");
             //    Console.WriteLine(e.Message + "\nPlease try a different product number");
             //}
+
+            #endregion
         }
     }
 }

@@ -61,9 +61,12 @@
     <Compile Include="CustomerDAL.cs" />
     <Compile Include="CustomerIDNotFound.cs" />
     <Compile Include="DuplicateCustomerID.cs" />
-    <Compile Include="DuplicateProductNumber.cs" />
+    <Compile Include="DuplicateOrderID.cs" />
+    <Compile Include="DuplicateProductID.cs" />
+    <Compile Include="OrderDAL.cs" />
+    <Compile Include="OrderIDNotFound.cs" />
     <Compile Include="ProductDAL.cs" />
-    <Compile Include="ProductNumberNotFound.cs" />
+    <Compile Include="ProductIDNotFound.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomerList.txt" />
+    <Content Include="OrderList.txt" />
     <Content Include="ProductList.txt" />
   </ItemGroup>
   <ItemGroup>
