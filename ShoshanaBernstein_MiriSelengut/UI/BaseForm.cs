@@ -34,6 +34,7 @@ namespace UI
         public virtual void BaseEnterBtn() { }
         private void EnterBtn_Click(object sender, EventArgs e)
         {
+            
             BaseEnterBtn();
         }
         #endregion

@@ -103,7 +103,7 @@ namespace BLL
 
         #region Read by Customer
         // method to read order by CustomerID (and throw exception otherwise)
-        public Order ReadCustomer(int customerID)
+        public List<Order> ReadCustomer(int customerID)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace BLL
 
         #region Read by product 
         // method to read order by Product ID (and throw exception otherwise)
-        public Order ReadProduct(int productID)
+        public List<Order> ReadProduct(int productID)
         {
             try
             {

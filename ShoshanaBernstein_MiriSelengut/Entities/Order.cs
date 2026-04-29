@@ -38,7 +38,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return "OrderID " + OrderID + " ProductID: " + ProductID + " CustomerID: " + CustomerID + " Quantity: " + OrderQuantity;
+            return "OrderID: " + OrderID + " ProductID: " + ProductID + " CustomerID: " + CustomerID + " Quantity: " + OrderQuantity;
         }
         }
     }

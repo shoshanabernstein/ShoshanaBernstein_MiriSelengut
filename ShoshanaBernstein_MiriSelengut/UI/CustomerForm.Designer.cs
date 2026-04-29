@@ -72,7 +72,7 @@
             // 
             // CustomerIDTxtBx
             // 
-            this.CustomerIDTxtBx.Location = new System.Drawing.Point(336, 30);
+            this.CustomerIDTxtBx.Location = new System.Drawing.Point(342, 30);
             this.CustomerIDTxtBx.Name = "CustomerIDTxtBx";
             this.CustomerIDTxtBx.Size = new System.Drawing.Size(79, 22);
             this.CustomerIDTxtBx.TabIndex = 2;

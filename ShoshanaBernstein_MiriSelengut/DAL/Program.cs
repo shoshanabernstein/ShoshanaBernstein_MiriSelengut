@@ -21,6 +21,7 @@ namespace DAL
 
             Console.WriteLine("\nCreating order");
             orderDAL.Create(order);
+            orderDAL.Create(new Order(1, 1, 20));
 
             Console.WriteLine("\nQuantity after adding");
             Console.WriteLine(productDAL.Read(order.ProductID).AmountInStock);
@@ -32,10 +33,10 @@ namespace DAL
             Console.WriteLine(orderDAL.Read(1));
 
             Console.WriteLine("\nRead by product");
-            Console.WriteLine(orderDAL.ReadProduct(1));
+            Console.WriteLine(string.Join("\n", orderDAL.ReadProduct(1)));
 
             Console.WriteLine("\nRead by customer");
-            Console.WriteLine(orderDAL.ReadCustomer(1));
+            Console.WriteLine(string.Join("\n", orderDAL.ReadCustomer(1)));
 
             Console.WriteLine("\nRead All");
             Console.WriteLine(string.Join("\n", orderDAL.ReadAll()));

@@ -1,6 +1,7 @@
 ﻿using Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -131,12 +132,13 @@ namespace DAL
         }
         #endregion
 
-        #region Read by customer
+        #region Read ALL by customer
         //method to return one order according to ID
-        public Order ReadCustomer(int customerID)
+        public List<Order> ReadCustomer(int customerID)
         {
             try
             {
+                List<Order> orders = new List<Order>();
                 // finding order based on customer
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -149,11 +151,14 @@ namespace DAL
                             list[i].OrderQuantity
                         );
                         readCustomerOrder.OrderID = list[i].OrderID;
-                        return readCustomerOrder;
+                        orders.Add(readCustomerOrder);
                     }
                 }
-
-                throw new CustomerIDNotFound();
+                if (orders.Count == 0)
+                {
+                    throw new CustomerIDNotFound();
+                }
+                return orders;
             }
             catch (CustomerIDNotFound ex)
             {
@@ -165,12 +170,14 @@ namespace DAL
         }
         #endregion
 
-        #region Read by product
+        #region Read ALL by product
         //method to return one order according to ID
-        public Order ReadProduct(int productID)
+        public List<Order> ReadProduct(int productID)
         {
             try
             {
+                List<Order> orders = new List<Order>();
+
                 // finding order based on product
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -183,11 +190,15 @@ namespace DAL
                             list[i].OrderQuantity
                         );
                         readProductOrder.OrderID = list[i].OrderID;
-                        return readProductOrder;
+                        orders.Add(readProductOrder);
                     }
+                    if (orders.Count == 0)
+                    {
+                        throw new ProductIDNotFound();
+                    }
+                    
                 }
-
-                throw new ProductIDNotFound();
+                return orders;
             }
             catch (ProductIDNotFound ex)
             {
@@ -229,6 +240,9 @@ namespace DAL
                     {
                         // making copy of order (with old ID and new info), and replacing it in correct place in list
                         Order updateOrder = new Order(order);
+                        updateOrder.CustomerID = order.CustomerID;
+                        updateOrder.ProductID = order.ProductID;
+                        updateOrder.OrderQuantity = order.OrderQuantity;
                         list[i] = updateOrder;
                         return;
                     }

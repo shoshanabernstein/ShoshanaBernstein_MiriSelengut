@@ -13,6 +13,8 @@ namespace UI
         {
             InitializeComponent();
             orderBLL = new OrderBLL();
+            SearchCustomerBtn.Visible = false;
+            SearchProductBtn.Visible = false;
         }
 
         delegate void EnterButton();
@@ -20,6 +22,7 @@ namespace UI
 
         public override void BaseEnterBtn()
         {
+            OrderGrpBx.Visible = false;
             enter();
         }
 
@@ -35,7 +38,6 @@ namespace UI
         public void OnlyIDVisible()
         {
             OrderGrpBx.Visible = true;
-
             foreach (Control c in OrderGrpBx.Controls)
             {
                 c.Visible = false;
@@ -45,6 +47,8 @@ namespace UI
                     c.Visible = true;
                 }
             }
+            SearchCustomerBtn.Visible = false;
+            SearchProductBtn.Visible = false;
         }
 
         public void Visible()
@@ -55,6 +59,8 @@ namespace UI
             {
                 c.Visible = true;
             }
+            SearchCustomerBtn.Visible = false;
+            SearchProductBtn.Visible = false;
         }
         #endregion
 
@@ -63,16 +69,19 @@ namespace UI
         {
             Clear();
             Visible();
-
+            OrderIDLbl.Visible = false;
+            OrderIDTxtBx.Visible = false;
             OrderGrpBx.Text = "Add a new order";
 
             enter = CreateEnter;
+            
         }
 
         private void CreateEnter()
         {
             try
             {
+
                 int customerID = int.Parse(CustomerIDTxtBx.Text);
                 int productID = int.Parse(ProductIDTxtBx.Text);
                 int orderQuantity = int.Parse(OrderQuantityTxtBx.Text);
@@ -115,9 +124,11 @@ namespace UI
 
             OrderGrpBx.Text = "Search order by ID";
 
+            SearchCustomerBtn.Visible = true;
+            SearchProductBtn.Visible = true;
+
             enter = ReadOneEnter;
         }
-
         private void ReadOneEnter()
         {
             try
@@ -147,6 +158,64 @@ namespace UI
         }
         #endregion
 
+        #region Read by product
+        private void SearchProductBtn_Click(object sender, EventArgs e)
+        {
+            Clear();
+            OnlyIDVisible();
+            OrderIDTxtBx.Visible = false;
+            OrderIDLbl.Visible = false;
+            ProductIDLbl.Visible = true;
+            ProductIDTxtBx.Visible = true;
+            enter = ReadProductEnter;
+        }
+
+        private void ReadProductEnter()
+        {
+            try
+            {
+                int productID = int.Parse(ProductIDTxtBx.Text);
+                MessageBox.Show(string.Join("\n", orderBLL.ReadProduct(productID)));
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        #endregion
+
+        #region Read by customer
+        private void SearchCustomerBtn_Click_1(object sender, EventArgs e)
+        {
+            Clear();
+            OnlyIDVisible();
+            OrderIDTxtBx.Visible = false;
+            OrderIDLbl.Visible = false;
+            CustomerIDLbl.Visible = true;
+            CustomerIDTxtBx.Visible = true;
+            enter = ReadCustomerEnter;
+        }
+
+
+        private void ReadCustomerEnter()
+        {
+            try
+            {
+
+                int customerID = int.Parse(CustomerIDTxtBx.Text);
+                MessageBox.Show(string.Join("\n", orderBLL.ReadCustomer(customerID)));
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        #endregion
+
         #region Delete
         public override void BaseDeleteBtn()
         {
@@ -163,7 +232,7 @@ namespace UI
             try
             {
                 int orderID = int.Parse(OrderIDTxtBx.Text);
-                
+
                 Order deleteOrder = orderBLL.Read(orderID);
 
                 orderBLL.Delete(deleteOrder);
@@ -184,7 +253,10 @@ namespace UI
         {
             Clear();
             Visible();
-
+            CustomerIDTxtBx.Visible = false;
+            CustomerIDLbl.Visible = false;
+            ProductIDTxtBx.Visible = false;
+            ProductIDLbl.Visible = false;
             OrderGrpBx.Text = "Update an order";
 
             enter = UpdateEnter;
@@ -195,21 +267,20 @@ namespace UI
             try
             {
                 int orderID = int.Parse(OrderIDTxtBx.Text);
+                int orderQuantity = int.Parse(OrderQuantityTxtBx.Text);
 
                 Order searchOrder = orderBLL.Read(orderID);
 
-                int customerID = int.Parse(CustomerIDTxtBx.Text);
-                int productID = int.Parse(ProductIDTxtBx.Text);
-                int orderQuantity = int.Parse(OrderQuantityTxtBx.Text);
-
-                Order updateOrder = new Order(customerID, productID, orderQuantity);
-
-                updateOrder.OrderID = orderID;
+                Order updateOrder = new Order(searchOrder);
+                updateOrder.CustomerID = searchOrder.CustomerID;
+                updateOrder.ProductID = searchOrder.ProductID;
+                updateOrder.OrderQuantity = orderQuantity;
 
                 orderBLL.Update(updateOrder);
 
                 MessageBox.Show("Your order has been updated");
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -240,5 +311,7 @@ namespace UI
         {
             Application.Exit();
         }
+
+
     }
 }
