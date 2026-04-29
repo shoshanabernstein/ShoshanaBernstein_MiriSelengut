@@ -91,6 +91,7 @@
             this.OrderFormBtn.TabIndex = 7;
             this.OrderFormBtn.Text = "Orders";
             this.OrderFormBtn.UseVisualStyleBackColor = true;
+            this.OrderFormBtn.Click += new System.EventHandler(this.OrderFormBtn_Click);
             // 
             // MainMenu
             // 

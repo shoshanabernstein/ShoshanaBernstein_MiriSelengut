@@ -40,5 +40,12 @@ namespace UI
         {
             Application.Exit();
         }
+
+        private void OrderFormBtn_Click(object sender, EventArgs e)
+        {
+            OrderForm orderFormFromMain = new OrderForm();
+            orderFormFromMain.Show();
+            this.Hide();
+        }
     }
 }

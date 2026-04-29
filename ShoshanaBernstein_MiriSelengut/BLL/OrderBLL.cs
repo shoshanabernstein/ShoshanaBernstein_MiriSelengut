@@ -10,13 +10,16 @@ namespace BLL
     {
         // instance of OrderDAL in BLL 
         private OrderDAL orderDAL;
-        private ProductDAL productDAL;
+        public ProductDAL productDAL = new ProductDAL();
+        public ProductBLL productBLL;
 
         #region Ctor
         // BLL ctor creating an object of OrderDAL
         public OrderBLL()
         {
             this.orderDAL = OrderDAL.Instance;
+            this.productBLL = new ProductBLL(productDAL);
+
         }
         #endregion
 
@@ -39,8 +42,13 @@ namespace BLL
 
                         //update quantity of product used in order
                         Product createProduct = productDAL.Read(tmp.ProductID);
-                        int newQuantity = createProduct.AmountInStock - tmp.OrderQuantity;
-                        productDAL.Update(new Product(createProduct.ProductNumber, createProduct.ProductName, createProduct.CostPerUnit, newQuantity));
+                        if (createProduct != null)
+                        {
+                            int newQuantity = createProduct.AmountInStock - tmp.OrderQuantity;
+                            productDAL.Update(new Product(createProduct.ProductNumber, createProduct.ProductName, createProduct.CostPerUnit, newQuantity));
+                        }
+
+
                         return;
                     }
                     throw new ProductIDNotFound();
@@ -93,13 +101,68 @@ namespace BLL
         }
         #endregion
 
+        #region Read by Customer
+        // method to read order by CustomerID (and throw exception otherwise)
+        public Order ReadCustomer(int customerID)
+        {
+            try
+            {
+                return orderDAL.ReadCustomer(customerID);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Caught in Read in Order BLL");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+        #endregion
+
+        #region Read by product 
+        // method to read order by Product ID (and throw exception otherwise)
+        public Order ReadProduct(int productID)
+        {
+            try
+            {
+                return orderDAL.ReadProduct(productID);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Caught in Read in Order BLL");
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+        #endregion
+
         #region Update
         // method to update orders (and throw exception otherwise)
         public void Update(Order tmp)
         {
             try
             {
+                // update the quantity of the product
+                Order updateOrder = orderDAL.Read(tmp.OrderID);
+                int oldQuantity = updateOrder.OrderQuantity;
+                int newQuantity = tmp.OrderQuantity;
+                int calculatedQuantity = newQuantity - oldQuantity;
+
+                if (calculatedQuantity != 0)
+                {
+                    //update quantity of product used in order
+                    Product createProduct = productDAL.Read(tmp.ProductID);
+
+                    if (createProduct != null)
+                    {
+                        int updateQuantity = createProduct.AmountInStock - calculatedQuantity;
+                        Product updateProductDAL = new Product(createProduct.ProductNumber, createProduct.ProductName, createProduct.CostPerUnit, updateQuantity);
+                        productBLL.Update(updateProductDAL);
+                    }
+                    Console.WriteLine($"Old: {oldQuantity}, New: {newQuantity}");
+                }
+
                 orderDAL.Update(tmp);
+                return;
             }
             catch (Exception ex)
             {

@@ -25,6 +25,7 @@ namespace DAL
             Console.WriteLine("\nQuantity after adding");
             Console.WriteLine(productDAL.Read(order.ProductID).AmountInStock);
 
+            Console.WriteLine("\n**Current List**");
             orderDAL.Print();
 
             Console.WriteLine("\nRead");
@@ -40,14 +41,22 @@ namespace DAL
             Console.WriteLine(string.Join("\n", orderDAL.ReadAll()));
 
             Console.WriteLine("Update");
-            int orderId = order.OrderID;
 
-            Order updateOrder = new Order(1, 1, 1);
+            Order updateOrder = new Order(order);
+            updateOrder.OrderQuantity = 500;
+            updateOrder.CustomerID = 1;
+            updateOrder.ProductID = 3;
+
             orderDAL.Update(updateOrder);
 
             Console.WriteLine("\nQuantity after updating");
             Console.WriteLine(productDAL.Read(order.ProductID).AmountInStock);
 
+            Console.WriteLine("\nDelete");
+            orderDAL.Delete(updateOrder);
+
+            Console.WriteLine("\nList after delete");
+            Console.WriteLine(string.Join("\n", orderDAL.ReadAll()));
 
             #region testing
             //ProductDAL products = new ProductDAL();

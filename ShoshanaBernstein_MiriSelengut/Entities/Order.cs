@@ -30,6 +30,12 @@ namespace Entities
             this.OrderID = OrderCounter;
         }
 
+        // copy ctor to fix auto incrementing issue
+        public Order(Order other)
+        {
+            this.OrderID = other.OrderID;
+        }
+
         public override string ToString()
         {
             return "OrderID " + OrderID + " ProductID: " + ProductID + " CustomerID: " + CustomerID + " Quantity: " + OrderQuantity;

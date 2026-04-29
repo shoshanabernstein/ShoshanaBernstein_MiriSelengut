@@ -63,11 +63,10 @@ namespace DAL
                 }
                 else
                 {
-                    Order newOrder = new Order(
-                        tmp.ProductID,
-                        tmp.CustomerID,
-                        tmp.OrderQuantity
-                        );
+                    Order newOrder = new Order(tmp);
+                    newOrder.OrderQuantity = tmp.OrderQuantity;
+                    newOrder.ProductID = tmp.ProductID;
+                    newOrder.CustomerID = tmp.CustomerID;
 
                     //add it to the list
                     list.Add(newOrder);
@@ -90,19 +89,34 @@ namespace DAL
             try
             {
                 // finding order based on ID
-                for (int i = 0; i < list.Count; i++)
+                //for (int i = 0; i < list.Count; i++)
+                //{
+                //    if (orderNumber == list[i].OrderID)
+                //    {
+                //        // Return a copy of the order
+                //        Order readOrder = new Order(list[i]);
+                //        readOrder.ProductID = list[i].ProductID;
+                //        readOrder.CustomerID = list[i].CustomerID;
+                //        readOrder.OrderQuantity = list[i].OrderQuantity;
+
+                //        return readOrder;
+                //    }
+                //}
+
+                int i = 0;
+                foreach(Order loopOrder in list)
                 {
-                    if (list[i].OrderID == orderNumber)
+                    if (loopOrder.OrderID == orderNumber)
                     {
-                        // Return a copy of the order
-                        Order readOrder = new Order(
-                            list[i].ProductID,
-                            list[i].CustomerID,
-                            list[i].OrderQuantity
-                        );
-                        readOrder.OrderID = list[i].OrderID;
+                        Order readOrder = new Order(list[i]);
+                        readOrder.ProductID = list[i].ProductID;
+                        readOrder.CustomerID = list[i].CustomerID;
+                        readOrder.OrderQuantity = list[i].OrderQuantity;
+
                         return readOrder;
                     }
+
+                    i++;
                 }
 
                 throw new OrderIDNotFound();
@@ -204,23 +218,18 @@ namespace DAL
         #endregion
 
         #region Update Order
-        public void Update(int orderID)
+        public void Update(Order order)
         {
             try
             {
                 // finding order based on ID
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (list[i].OrderID == orderID)
+                    if (list[i].OrderID == order.OrderID)
                     {
-                        Order newOrder = new Order(
-                            tmp.ProductID,
-                            tmp.CustomerID,
-                            tmp.OrderQuantity
-                        );
-                        newOrder.OrderID = tmp.OrderID;
-
-                        list[i] = newOrder;
+                        // making copy of order (with old ID and new info), and replacing it in correct place in list
+                        Order updateOrder = new Order(order);
+                        list[i] = updateOrder;
                         return;
                     }
                 }
