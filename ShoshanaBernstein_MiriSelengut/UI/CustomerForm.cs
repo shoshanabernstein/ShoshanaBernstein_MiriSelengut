@@ -33,6 +33,7 @@ namespace UI
         {
             enter();
         }
+
         #region methods
         public void Clear()
         {
@@ -73,6 +74,7 @@ namespace UI
             CreditCardGrpBx.Visible = true;
         }
         #endregion
+
         #region Create
         public override void BaseCreateBtn()
         {
@@ -109,6 +111,7 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                Clear();
             }
         }
         #endregion

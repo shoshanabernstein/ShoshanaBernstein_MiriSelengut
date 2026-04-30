@@ -18,6 +18,9 @@ namespace UI
         ProductDAL productDAL;
         ProductBLL productBLL;
 
+        delegate void EnterButton();
+        EnterButton enter;
+
         public ProductForm()
         {
             InitializeComponent();
@@ -25,9 +28,6 @@ namespace UI
             productDAL = new ProductDAL();
             productBLL = new ProductBLL(productDAL);
         }
-
-        delegate void EnterButton();
-        EnterButton enter;
 
         public override void BaseEnterBtn()
         {
