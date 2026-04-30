@@ -55,7 +55,7 @@
             this.CreateGrpBx.Controls.Add(this.CustomerNameTxtBx);
             this.CreateGrpBx.Controls.Add(this.CreditCardGrpBx);
             this.CreateGrpBx.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.CreateGrpBx.Location = new System.Drawing.Point(192, 67);
+            this.CreateGrpBx.Location = new System.Drawing.Point(165, 68);
             this.CreateGrpBx.Name = "CreateGrpBx";
             this.CreateGrpBx.Size = new System.Drawing.Size(428, 262);
             this.CreateGrpBx.TabIndex = 12;

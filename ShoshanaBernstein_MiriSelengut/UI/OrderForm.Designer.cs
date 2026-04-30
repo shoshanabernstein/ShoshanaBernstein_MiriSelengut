@@ -68,7 +68,7 @@
             this.OrderGrpBx.Controls.Add(this.ProductIDLbl);
             this.OrderGrpBx.Controls.Add(this.ProductIDTxtBx);
             this.OrderGrpBx.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.OrderGrpBx.Location = new System.Drawing.Point(223, 67);
+            this.OrderGrpBx.Location = new System.Drawing.Point(207, 68);
             this.OrderGrpBx.Name = "OrderGrpBx";
             this.OrderGrpBx.Size = new System.Drawing.Size(348, 262);
             this.OrderGrpBx.TabIndex = 13;
@@ -169,7 +169,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(660, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(660, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 

@@ -118,10 +118,10 @@
             this.EnterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EnterBtn.Font = new System.Drawing.Font("Narkisim", 9F);
             this.EnterBtn.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.EnterBtn.Location = new System.Drawing.Point(475, 303);
+            this.EnterBtn.Location = new System.Drawing.Point(340, 342);
             this.EnterBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EnterBtn.Name = "EnterBtn";
-            this.EnterBtn.Size = new System.Drawing.Size(75, 23);
+            this.EnterBtn.Size = new System.Drawing.Size(82, 46);
             this.EnterBtn.TabIndex = 13;
             this.EnterBtn.Text = "Enter";
             this.EnterBtn.UseVisualStyleBackColor = false;
@@ -133,7 +133,7 @@
             this.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CloseBtn.Font = new System.Drawing.Font("Narkisim", 9F);
             this.CloseBtn.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.CloseBtn.Location = new System.Drawing.Point(475, 356);
+            this.CloseBtn.Location = new System.Drawing.Point(488, 372);
             this.CloseBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(149, 30);

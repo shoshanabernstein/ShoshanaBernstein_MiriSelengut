@@ -53,7 +53,7 @@
             this.CreateGrpBx.Controls.Add(this.ProductNameLbl);
             this.CreateGrpBx.Controls.Add(this.ProductNameTxtBx);
             this.CreateGrpBx.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.CreateGrpBx.Location = new System.Drawing.Point(214, 67);
+            this.CreateGrpBx.Location = new System.Drawing.Point(191, 68);
             this.CreateGrpBx.Name = "CreateGrpBx";
             this.CreateGrpBx.Size = new System.Drawing.Size(378, 262);
             this.CreateGrpBx.TabIndex = 11;
