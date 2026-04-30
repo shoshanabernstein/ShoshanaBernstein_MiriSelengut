@@ -163,11 +163,12 @@ namespace UI
         }
         private void ReadOneEnter()
         {
+
             try
             {
                 // Searching for customer ID
                 int customerID = int.Parse(CustomerIDTxtBx.Text);
-
+                
                 Customer c = customerBLL.Read(customerID);
                 CreditCard newcard = c.creditCard;
 
@@ -187,7 +188,18 @@ namespace UI
                         ExpYearTxtBx.Text = searchCard.ExpYear;
                         CVVTxtBx.Text = searchCard.CVV;
                     }
-                    CustomerNameTxtBx.Text = c.CustomerName;
+                    else
+                    {
+                        foreach (Control ctrl in CreditCardGrpBx.Controls)
+                        {
+                            if (ctrl is TextBox textBox)
+                            {
+                                textBox.Clear();
+                            }
+                        }
+                    } 
+                        
+                        CustomerNameTxtBx.Text = c.CustomerName;
                 }
                 else
                 {
@@ -198,6 +210,7 @@ namespace UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                OnlyIDVisible();
             }
         }
         #endregion
@@ -335,6 +348,11 @@ namespace UI
         }
 
         private void CardNumberTxtBx_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreditCardGrpBx_Enter(object sender, EventArgs e)
         {
 
         }

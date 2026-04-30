@@ -9,7 +9,7 @@ namespace DAL
     public class DuplicateOrderID : Exception
     {
         public DuplicateOrderID()
-    : base("That Order ID already exists")
+    : base("That order ID already exists")
         { }
 
         public DuplicateOrderID(string message)

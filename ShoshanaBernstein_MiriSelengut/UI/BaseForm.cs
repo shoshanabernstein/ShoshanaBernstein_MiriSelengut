@@ -18,6 +18,7 @@ namespace UI
         public BaseForm()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.None;
         }
 
         # region Create
@@ -34,7 +35,6 @@ namespace UI
         public virtual void BaseEnterBtn() { }
         private void EnterBtn_Click(object sender, EventArgs e)
         {
-            
             BaseEnterBtn();
         }
         #endregion

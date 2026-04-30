@@ -54,9 +54,10 @@
             this.CreateGrpBx.Controls.Add(this.CustomerNameLbl);
             this.CreateGrpBx.Controls.Add(this.CustomerNameTxtBx);
             this.CreateGrpBx.Controls.Add(this.CreditCardGrpBx);
-            this.CreateGrpBx.Location = new System.Drawing.Point(162, 94);
+            this.CreateGrpBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CreateGrpBx.Location = new System.Drawing.Point(192, 67);
             this.CreateGrpBx.Name = "CreateGrpBx";
-            this.CreateGrpBx.Size = new System.Drawing.Size(428, 222);
+            this.CreateGrpBx.Size = new System.Drawing.Size(428, 262);
             this.CreateGrpBx.TabIndex = 12;
             this.CreateGrpBx.TabStop = false;
             this.CreateGrpBx.Text = "Add a new customer";
@@ -64,34 +65,40 @@
             // CustomerIDLbl
             // 
             this.CustomerIDLbl.AutoSize = true;
-            this.CustomerIDLbl.Location = new System.Drawing.Point(253, 34);
+            this.CustomerIDLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CustomerIDLbl.Location = new System.Drawing.Point(252, 48);
             this.CustomerIDLbl.Name = "CustomerIDLbl";
-            this.CustomerIDLbl.Size = new System.Drawing.Size(83, 16);
+            this.CustomerIDLbl.Size = new System.Drawing.Size(84, 15);
             this.CustomerIDLbl.TabIndex = 3;
             this.CustomerIDLbl.Text = "Customer ID:";
             // 
             // CustomerIDTxtBx
             // 
-            this.CustomerIDTxtBx.Location = new System.Drawing.Point(342, 30);
+            this.CustomerIDTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.CustomerIDTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CustomerIDTxtBx.Location = new System.Drawing.Point(341, 44);
             this.CustomerIDTxtBx.Name = "CustomerIDTxtBx";
             this.CustomerIDTxtBx.Size = new System.Drawing.Size(79, 22);
-            this.CustomerIDTxtBx.TabIndex = 2;
+            this.CustomerIDTxtBx.TabIndex = 7;
             // 
             // CustomerNameLbl
             // 
             this.CustomerNameLbl.AutoSize = true;
-            this.CustomerNameLbl.Location = new System.Drawing.Point(8, 34);
+            this.CustomerNameLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CustomerNameLbl.Location = new System.Drawing.Point(7, 48);
             this.CustomerNameLbl.Name = "CustomerNameLbl";
-            this.CustomerNameLbl.Size = new System.Drawing.Size(107, 16);
+            this.CustomerNameLbl.Size = new System.Drawing.Size(105, 15);
             this.CustomerNameLbl.TabIndex = 1;
             this.CustomerNameLbl.Text = "Customer Name:";
             // 
             // CustomerNameTxtBx
             // 
-            this.CustomerNameTxtBx.Location = new System.Drawing.Point(121, 30);
+            this.CustomerNameTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.CustomerNameTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CustomerNameTxtBx.Location = new System.Drawing.Point(120, 44);
             this.CustomerNameTxtBx.Name = "CustomerNameTxtBx";
             this.CustomerNameTxtBx.Size = new System.Drawing.Size(126, 22);
-            this.CustomerNameTxtBx.TabIndex = 0;
+            this.CustomerNameTxtBx.TabIndex = 6;
             // 
             // CreditCardGrpBx
             // 
@@ -104,90 +111,106 @@
             this.CreditCardGrpBx.Controls.Add(this.ExpLbl);
             this.CreditCardGrpBx.Controls.Add(this.ExpMonthTxtBx);
             this.CreditCardGrpBx.Controls.Add(this.CardNumberTxtBx);
-            this.CreditCardGrpBx.Location = new System.Drawing.Point(9, 68);
+            this.CreditCardGrpBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CreditCardGrpBx.Location = new System.Drawing.Point(8, 97);
             this.CreditCardGrpBx.Name = "CreditCardGrpBx";
-            this.CreditCardGrpBx.Size = new System.Drawing.Size(413, 138);
+            this.CreditCardGrpBx.Size = new System.Drawing.Size(413, 129);
             this.CreditCardGrpBx.TabIndex = 13;
             this.CreditCardGrpBx.TabStop = false;
             this.CreditCardGrpBx.Text = "Credit Card";
+            this.CreditCardGrpBx.Enter += new System.EventHandler(this.CreditCardGrpBx_Enter);
             // 
             // CardNumberLbl
             // 
             this.CardNumberLbl.AutoSize = true;
-            this.CardNumberLbl.Location = new System.Drawing.Point(6, 22);
+            this.CardNumberLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CardNumberLbl.Location = new System.Drawing.Point(6, 21);
             this.CardNumberLbl.Name = "CardNumberLbl";
-            this.CardNumberLbl.Size = new System.Drawing.Size(87, 16);
+            this.CardNumberLbl.Size = new System.Drawing.Size(86, 15);
             this.CardNumberLbl.TabIndex = 21;
             this.CardNumberLbl.Text = "Card Number";
             // 
             // CvvLbl
             // 
             this.CvvLbl.AutoSize = true;
-            this.CvvLbl.Location = new System.Drawing.Point(295, 88);
+            this.CvvLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CvvLbl.Location = new System.Drawing.Point(295, 82);
             this.CvvLbl.Name = "CvvLbl";
-            this.CvvLbl.Size = new System.Drawing.Size(37, 16);
+            this.CvvLbl.Size = new System.Drawing.Size(42, 15);
             this.CvvLbl.TabIndex = 20;
             this.CvvLbl.Text = "CVV:";
             // 
             // CVVTxtBx
             // 
-            this.CVVTxtBx.Location = new System.Drawing.Point(338, 82);
+            this.CVVTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.CVVTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CVVTxtBx.Location = new System.Drawing.Point(338, 77);
             this.CVVTxtBx.Name = "CVVTxtBx";
             this.CVVTxtBx.Size = new System.Drawing.Size(63, 22);
-            this.CVVTxtBx.TabIndex = 19;
+            this.CVVTxtBx.TabIndex = 12;
             // 
             // ExpYearTxtBx
             // 
-            this.ExpYearTxtBx.Location = new System.Drawing.Point(365, 44);
+            this.ExpYearTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.ExpYearTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.ExpYearTxtBx.Location = new System.Drawing.Point(373, 41);
             this.ExpYearTxtBx.Name = "ExpYearTxtBx";
             this.ExpYearTxtBx.Size = new System.Drawing.Size(34, 22);
-            this.ExpYearTxtBx.TabIndex = 18;
+            this.ExpYearTxtBx.TabIndex = 10;
             // 
             // CardHolderNameLbl
             // 
             this.CardHolderNameLbl.AutoSize = true;
-            this.CardHolderNameLbl.Location = new System.Drawing.Point(6, 69);
+            this.CardHolderNameLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CardHolderNameLbl.Location = new System.Drawing.Point(6, 65);
             this.CardHolderNameLbl.Name = "CardHolderNameLbl";
-            this.CardHolderNameLbl.Size = new System.Drawing.Size(123, 16);
+            this.CardHolderNameLbl.Size = new System.Drawing.Size(121, 15);
             this.CardHolderNameLbl.TabIndex = 17;
             this.CardHolderNameLbl.Text = "Card Holder Name:";
             // 
             // CardHolderNameTxtBx
             // 
-            this.CardHolderNameTxtBx.Location = new System.Drawing.Point(6, 88);
+            this.CardHolderNameTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.CardHolderNameTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CardHolderNameTxtBx.Location = new System.Drawing.Point(6, 82);
             this.CardHolderNameTxtBx.Name = "CardHolderNameTxtBx";
             this.CardHolderNameTxtBx.Size = new System.Drawing.Size(286, 22);
-            this.CardHolderNameTxtBx.TabIndex = 16;
+            this.CardHolderNameTxtBx.TabIndex = 11;
             // 
             // ExpLbl
             // 
             this.ExpLbl.AutoSize = true;
-            this.ExpLbl.Location = new System.Drawing.Point(295, 47);
+            this.ExpLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.ExpLbl.Location = new System.Drawing.Point(295, 46);
             this.ExpLbl.Name = "ExpLbl";
-            this.ExpLbl.Size = new System.Drawing.Size(33, 16);
+            this.ExpLbl.Size = new System.Drawing.Size(33, 15);
             this.ExpLbl.TabIndex = 15;
             this.ExpLbl.Text = "Exp:";
             // 
             // ExpMonthTxtBx
             // 
-            this.ExpMonthTxtBx.Location = new System.Drawing.Point(327, 44);
+            this.ExpMonthTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.ExpMonthTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.ExpMonthTxtBx.Location = new System.Drawing.Point(333, 41);
             this.ExpMonthTxtBx.Name = "ExpMonthTxtBx";
             this.ExpMonthTxtBx.Size = new System.Drawing.Size(34, 22);
-            this.ExpMonthTxtBx.TabIndex = 14;
+            this.ExpMonthTxtBx.TabIndex = 9;
             // 
             // CardNumberTxtBx
             // 
-            this.CardNumberTxtBx.Location = new System.Drawing.Point(6, 41);
+            this.CardNumberTxtBx.BackColor = System.Drawing.Color.Linen;
+            this.CardNumberTxtBx.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.CardNumberTxtBx.Location = new System.Drawing.Point(6, 38);
             this.CardNumberTxtBx.Name = "CardNumberTxtBx";
             this.CardNumberTxtBx.Size = new System.Drawing.Size(286, 22);
-            this.CardNumberTxtBx.TabIndex = 13;
+            this.CardNumberTxtBx.TabIndex = 8;
             this.CardNumberTxtBx.TextChanged += new System.EventHandler(this.CardNumberTxtBx_TextChanged);
             // 
             // CustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 422);
             this.Controls.Add(this.CreateGrpBx);
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";

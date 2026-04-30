@@ -33,28 +33,34 @@ namespace BLL
                 bool existsProduct = ProductDAL.list.Any(p => p.ProductNumber == tmp.ProductID);
                 bool existsCustomer = CustomerDAL.list.Any(p => p.CustomerID == tmp.CustomerID);
 
-                if (existsCustomer)
+                if (existsCustomer && existsProduct)
                 {
-                    if (existsProduct)
+                    // create new order
+                    orderDAL.Create(tmp);
+
+                    //update quantity of product used in order
+                    Product createProduct = productDAL.Read(tmp.ProductID);
+                    if (createProduct != null)
                     {
-                        // create new order
-                        orderDAL.Create(tmp);
-
-                        //update quantity of product used in order
-                        Product createProduct = productDAL.Read(tmp.ProductID);
-                        if (createProduct != null)
+                        int newQuantity = createProduct.AmountInStock - tmp.OrderQuantity;
+                        if (newQuantity < 0)
                         {
-                            int newQuantity = createProduct.AmountInStock - tmp.OrderQuantity;
-                            productDAL.Update(new Product(createProduct.ProductNumber, createProduct.ProductName, createProduct.CostPerUnit, newQuantity));
+                            throw new InsufficientQuantity();
                         }
-
-
-                        return;
+                        productDAL.Update(new Product(createProduct.ProductNumber, createProduct.ProductName, createProduct.CostPerUnit, newQuantity));
                     }
+                    return;
+                }
+
+                if (!existsCustomer)
+                {
+                    throw new CustomerIDNotFound();
+                }
+
+                if (!existsProduct)
+                {
                     throw new ProductIDNotFound();
                 }
-                throw new CustomerIDNotFound();
-
             }
             catch (OrderIDNotFound ex)
             {
@@ -155,10 +161,13 @@ namespace BLL
                     if (createProduct != null)
                     {
                         int updateQuantity = createProduct.AmountInStock - calculatedQuantity;
+                        if (updateQuantity < 0)
+                        {
+                            throw new InsufficientQuantity();
+                        }
                         Product updateProductDAL = new Product(createProduct.ProductNumber, createProduct.ProductName, createProduct.CostPerUnit, updateQuantity);
                         productBLL.Update(updateProductDAL);
                     }
-                    Console.WriteLine($"Old: {oldQuantity}, New: {newQuantity}");
                 }
 
                 orderDAL.Update(tmp);

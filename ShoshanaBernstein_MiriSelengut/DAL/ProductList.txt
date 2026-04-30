@@ -1,3 +1,5 @@
 1 Couch 2000.99 599
 2 Armchair 500.47 259
 3 Bed 200.00 324
+4 Nighttable 69.99 412
+5 Dressers 326.00 215

@@ -63,6 +63,7 @@
     <Compile Include="DuplicateCustomerID.cs" />
     <Compile Include="DuplicateOrderID.cs" />
     <Compile Include="DuplicateProductID.cs" />
+    <Compile Include="InsufficientQuantity.cs" />
     <Compile Include="OrderDAL.cs" />
     <Compile Include="OrderIDNotFound.cs" />
     <Compile Include="ProductDAL.cs" />

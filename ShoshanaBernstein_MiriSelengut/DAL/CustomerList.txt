@@ -1,3 +1,5 @@
-Miri 1 creditcard
-Shoshana 2 card
-Shrags 3 credit card
+Miri 1
+Shoshana 2
+Shrags 3
+Esther 4
+Meira 5

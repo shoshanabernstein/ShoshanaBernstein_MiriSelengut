@@ -192,11 +192,11 @@ namespace DAL
                         readProductOrder.OrderID = list[i].OrderID;
                         orders.Add(readProductOrder);
                     }
-                    if (orders.Count == 0)
-                    {
-                        throw new ProductIDNotFound();
-                    }
-                    
+
+                }
+                if (orders.Count == 0)
+                {
+                    throw new ProductIDNotFound();
                 }
                 return orders;
             }

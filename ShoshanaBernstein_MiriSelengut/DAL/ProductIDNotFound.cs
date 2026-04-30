@@ -9,7 +9,7 @@ namespace DAL
     public class ProductIDNotFound : Exception
     {
         public ProductIDNotFound()
-    : base("That product number isn't found")
+    : base("That product ID isn't found")
         { }
 
         public ProductIDNotFound(string message)

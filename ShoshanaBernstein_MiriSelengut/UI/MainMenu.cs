@@ -15,6 +15,7 @@ namespace UI
         public MainMenu()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.None;
         }
 
         private void CustomerFormBtn_Click(object sender, EventArgs e)

@@ -292,6 +292,7 @@ namespace UI
                 MessageBox.Show(ex.Message);
 
             }
+            CreateGrpBx.Visible = false;
         }
         #endregion
 
@@ -317,6 +318,11 @@ namespace UI
         private void ProductForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -15,6 +15,7 @@ namespace UI
             orderBLL = new OrderBLL();
             SearchCustomerBtn.Visible = false;
             SearchProductBtn.Visible = false;
+            OrderGrpBx.Visible = false;
         }
 
         delegate void EnterButton();
@@ -86,7 +87,7 @@ namespace UI
                 int productID = int.Parse(ProductIDTxtBx.Text);
                 int orderQuantity = int.Parse(OrderQuantityTxtBx.Text);
 
-                Order newOrder = new Order(customerID, productID, orderQuantity);
+                Order newOrder = new Order(productID, customerID, orderQuantity);
 
                 orderBLL.Create(newOrder);
 

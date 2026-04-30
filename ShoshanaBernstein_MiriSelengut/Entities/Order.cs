@@ -28,6 +28,8 @@ namespace Entities
                 OrderCounter++;
             }
             this.OrderID = OrderCounter;
+
+
         }
 
         // copy ctor to fix auto incrementing issue
@@ -38,8 +40,8 @@ namespace Entities
 
         public override string ToString()
         {
-            return "OrderID: " + OrderID + " ProductID: " + ProductID + " CustomerID: " + CustomerID + " Quantity: " + OrderQuantity;
-        }
+            return "Order ID: " + OrderID + "\nProduct ID: " + ProductID + "\nCustomer ID: " + CustomerID + "\nQuantity: " + OrderQuantity + "\n\n--------------\n";
         }
     }
+}
 
